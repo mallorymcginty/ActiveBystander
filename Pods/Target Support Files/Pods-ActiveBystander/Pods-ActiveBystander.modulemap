@@ -1,0 +1,6 @@
+framework module Pods_ActiveBystander {
+  umbrella header "Pods-ActiveBystander-umbrella.h"
+
+  export *
+  module * { export * }
+}
