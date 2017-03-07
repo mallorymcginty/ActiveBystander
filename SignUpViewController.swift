@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+
 
 class SignUpViewController: UIViewController {
 
@@ -18,32 +20,106 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var txtConfirm: UITextField!
     
     @IBOutlet weak var btnSignUp: UIButton!
+
+//Still need to add password = confirm
+//Still need to add user must have .edu email
+//Still need to store user name in Firebase
+    
+   let userNodeRef = FIRDatabase.database().reference().child("users")
     
     
-    @IBAction func btnSignUp_TouchUpInside(_ sender: UIButton)
+    @IBAction func btnSignUp(_ sender: Any)
+
     {
-     /*   if let email = txtEmail.text, let password = txtPassword.text, let confirm = txtConfirm.text, let first = txtFirst.text, let last = txtLast.text
-        {
+    
+  
+        if let email = txtEmail.text, let password = txtPassword.text, let confirm = txtConfirm.text, let first = txtFirst.text, let last = txtLast.text
+         {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password) {(user, error) in
+                if user != nil
+                {
             
-        }*/
+                    
+                    let userValues = ["first": first, "last": last, "email": email]
+                    self.userNodeRef.child((user?.uid)!).updateChildValues(userValues, withCompletionBlock: {(userDBError, userDBRef) in
+                        if userDBError != nil
+                        {
+                            let alertTitle = "User registration Failed!"
+                            let alertMessage = ("Unable to save your information to the database. Contact System Administrator.")
+                            
+                            
+                            
+                            let alertController = UIAlertController(title: alertTitle, message: (alertMessage), preferredStyle: UIAlertControllerStyle.alert)
+                            
+                            // create an OK button for dismissing the alert
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                                (result : UIAlertAction) -> Void in
+                                print("OK")
+                            }
+                            
+                            // add a button to the alert pop-up
+                            alertController.addAction(okAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+
+                        
+                    })
+                    
+                    
+                   let vc = self.storyboard?.instantiateViewController(withIdentifier: "terms")
+                   self.present(vc!, animated: true, completion: nil)
+                
+    
+                    
+                }
+                else
+                {
+                    let alertTitle = "Registration Failed!"
+                    let alertMessage = (error?.localizedDescription)!
+                    
+
+                    
+                    let alertController = UIAlertController(title: alertTitle, message: (alertMessage), preferredStyle: UIAlertControllerStyle.alert)
+                
+                    // create an OK button for dismissing the alert
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("OK")
+                }
+                
+                    // add a button to the alert pop-up
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
+            }
+            }
+        
     }
-    
-    
-    override func viewDidLoad() {
+
+        
+        
+        
+        
+
+    func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+
+
+}
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+        txtEmail.resignFirstResponder()
+        txtPassword.resignFirstResponder()
+        txtConfirm.resignFirstResponder()
+        txtFirst.resignFirstResponder()
+        txtLast.resignFirstResponder()
     }
-    */
-
+    
+    
+    
 }

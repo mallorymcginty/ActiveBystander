@@ -15,21 +15,36 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBOutlet weak var btnSignIn: UIButton!
-    @IBOutlet weak var btnGoToSignUp: UIButton!
+
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
-    @IBAction func btnSignIn(_ sender: UIButton)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func btnSignIn(_ sender: Any)
     {
-        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+        
+        activityIndicator.isHidden = false
+        btnSignIn.isHidden = true
+        
             
             // if the signin is successful then we should have a valid "user" value
-            if user != nil {
-                // user is found go to the menu screen: present it modally (with no back button)
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "menu")
-                // in this case, "weather" should be your landing pages' storyboard id
-                self.present(vc!, animated: true, completion: nil)
-            }
-            else{
+            if let email = txtEmail.text, let password = txtPassword.text
+            {
+                FIRAuth.auth()?.signIn(withEmail: email, password: password) {(user, error) in
+                if user != nil
+                {
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "menu")
+                    self.present(vc!, animated: true, completion: nil)
+                    }
+            
+            else
+                {
                 // check error and show an error message)
                 
                 let alertController = UIAlertController(title: "Login Failed!", message: (error?.localizedDescription)!, preferredStyle: UIAlertControllerStyle.alert)
@@ -44,22 +59,29 @@ class LoginViewController: UIViewController {
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
             }
+        }
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+        txtEmail.resignFirstResponder()
+        txtPassword.resignFirstResponder()
+    }
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        if FIRAuth.auth()?.currentUser != nil
+        {
+            activityIndicator.isHidden = true
+            btnSignIn.isHidden = false
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "menu")
+            self.present(vc!, animated: true, completion: nil)
+        }
     }
     
     
-    
-   
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
