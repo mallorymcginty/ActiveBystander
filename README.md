@@ -1,6 +1,5 @@
-# Week5---Assignment4
+# Week 7 - Project 6
 
-Login, Sign Up, and Terms screens are imported from sketch.
+All screens are imported (minus a couple views that will go in/on existing controllers)
 
-
-Also contains Project 4. Navigation errors with login and sign up.
+Currently working on IncidentLog (table view)
