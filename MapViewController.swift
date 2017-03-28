@@ -2,65 +2,114 @@
 //  MapViewController.swift
 //  ActiveBystander
 //
-//  Created by Ivor D. Addo, PhD on 3/5/17.
+//  Created by Ivor D. Addo, PhD on 3/9/17.
 //  Copyright © 2017 Mallory McGinty. All rights reserved.
 //
 
 import UIKit
-import Firebase
 import MapKit
+import Firebase
+
+
 
 class MapViewController: UIViewController
 {
-    
-
     @IBOutlet weak var mapView: MKMapView!
     
+    var alertNodeRef : FIRDatabaseReference!
+    
+
+
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+
+        self.mapView.delegate = self
+            
+            let initialLocation = CLLocation(latitude: 43.038611, longitude: -87.928759)
+            centerMapOnLocation(location: initialLocation)
+        
+        
+
+        
+        //Create DB reference
+        alertNodeRef = FIRDatabase.database().reference().child("alerts")
+        
+        
+        let pinAlertId = "alrt-1"
+        var pinAlert: Alert?
+        alertNodeRef.child(pinAlertId).observe(.value, with: { (snapshot: FIRDataSnapshot) in
+            
+            if let dictionary = snapshot.value as? [String: Any]
+            {
+                if pinAlert != nil
+                {
+                    self.mapView.removeAnnotation(pinAlert!)
+                }
+                
+                let pinLat = dictionary["latitude"] as! Double
+                let pinLong = dictionary["longitude"] as! Double
+                let alertDisabled = dictionary["isDisabled"] as! Bool
+                
+                let alert = Alert(title: (dictionary["title"] as? String)!,
+                                  locationName: (dictionary["locationName"] as? String)!,
+                                  username: (dictionary["username"] as? String)!,
+                                  coordinate: CLLocationCoordinate2D(latitude: pinLat, longitude: pinLong),
+                                  isDisabled: alertDisabled
+                    )
+                
+            
+                
+        pinAlert = alert
+            
+                if !alert.isDisabled
+                {
+                    self.mapView.addAnnotation(alert)
+                }
+            }
+            })
+        }
+    
+     /*  let alert = Alert(title: "Person Name", locationName: "Person info", username: "user123", coordinate: CLLocationCoordinate2D(latitude: 43.043914, longitude:-87.917262), isDisabled: false)
+        
+        mapView.addAnnotation(alert)*/
+        
+        
     
     
+   
     
-    
-    //set initial location - DO I NEED THIS???
-    let initialLocation = CLLocation(latitude: 43.038611, longitude: -87.928759)
-    
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 500
     func centerMapOnLocation(location: CLLocation)
     {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         
         mapView.setRegion(coordinateRegion, animated: true)
+        
     }
 
     
-override func viewDidLoad()
-    {
-    super.viewDidLoad()
-        
-    //set initial location to MU - DO I NEED THIS??
-    let initalLocation = CLLocation(latitude: 43.038611, longitude: -87.928759)
-    centerMapOnLocation(location: initialLocation)
-    }
     var locationManager = CLLocationManager()
     func checkLocationAuthorizationStatus()
     {
-       if CLLocationManager.authorizationStatus() == .authorizedWhenInUse
-       {
-        mapView.showsUserLocation = true
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+        {
+            mapView.showsUserLocation = true
         }
-        
         else
-       {
-        locationManager.requestWhenInUseAuthorization()
+        {
+            locationManager.requestWhenInUseAuthorization()
         }
     }
     
-
-    override func viewDidAppear(_ animated: Bool) {
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
-        
-    
+    }
 }
-}
-
-

@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
 
 //Still need to add password = confirm
 //Still need to add user must have .edu email
-//Still need to store user name in Firebase
+
     
    let userNodeRef = FIRDatabase.database().reference().child("users")
     
