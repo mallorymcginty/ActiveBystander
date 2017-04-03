@@ -13,19 +13,16 @@ import Firebase
 class Alert: NSObject, MKAnnotation
 {
     
-    //change fields to match alert info
-    let title: String?
-    let locationName: String
-    let username: String
+    //Pull First and link profile info
+    //First as Title
+    let alertDescription: String?
     let coordinate: CLLocationCoordinate2D
     let isDisabled: Bool
     
-    init(title: String, locationName: String, username: String, coordinate: CLLocationCoordinate2D, isDisabled: Bool)
+    init(alertDescription: String, coordinate: CLLocationCoordinate2D, isDisabled: Bool)
     {
         //change to match above
-        self.title = title
-        self.locationName = locationName
-        self.username = username
+        self.alertDescription = alertDescription
         self.coordinate = coordinate
         self.isDisabled = isDisabled
         
@@ -36,7 +33,7 @@ class Alert: NSObject, MKAnnotation
     var subtitle: String?
     {
             //change to match above
-            return locationName
+            return alertDescription
     }
     
     

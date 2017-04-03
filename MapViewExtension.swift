@@ -42,16 +42,16 @@ extension MapViewController: MKMapViewDelegate
     {
         let alert = view.annotation as! Alert
         //change to person..
-        let placeName = alert.title
-        let placeInfo = alert.subtitle
+       // let first = alert.title
+        let alertDescription = alert.subtitle
         
-        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        let ac = UIAlertController(title: "FIRSTNAME", message: alertDescription, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
-        ac.addAction(UIAlertAction(title: "Remove", style: .default)
+       /* ac.addAction(UIAlertAction(title: "Remove", style: .default)
         {
             (result : UIAlertAction) -> Void in
             mapView.removeAnnotation(alert)
-        })
+        })*/
        present(ac, animated: true)
     
 

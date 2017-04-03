@@ -12,6 +12,9 @@ import FirebaseAuth
 
 class UpdateAccountSettingsViewController: UIViewController {
 
+    //DONT LET EDIT FIRST OR LAST
+    //SPECIAL CASE FOR EMAIL AND PW
+    //PHOTO
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var txtFirst: UITextField!
@@ -29,31 +32,59 @@ class UpdateAccountSettingsViewController: UIViewController {
 
     @IBAction func btnSaveAcct(_ sender: Any)
     {
-        //Notifications..
-        if let first = txtFirst.text, let last = txtLast.text, let email = txtEmail.text, let phone = txtPhone.text, let campus = txtCampusSafety.text
-        {
-            FIRAuth.auth()?.createUser(withEmail: email, password: "") {(user, error) in
-                
-              //  {
-                    //Email special case??
-              //      let userValues = ["first": first, "last": last, "email": email, "phone": phone, "campus safety": campus]
-                  //  self.userNodeRef.child((user?.uid)!).updateChildValues(userValues, withCompletionBlock: {(userDBError, userDBRef) in
-                        
-             //       })
+        var ref: FIRDatabaseReference!
+        //SPECIFIC USER
+        ref = FIRDatabase.database().reference()
+        
+        let user : [String : Any] =
+            ["Phone": txtPhone.text!,
+             "Campus Safety": txtCampusSafety.text!,
+             "Notifications": switchNotifications]
+        
+        //Adds FB JSON node for incidentLog
+        ref.child("users").childByAutoId().setValue(user)
+        
+        txtPhone.text = nil
+        txtCampusSafety.text = nil
+        switchNotifications = nil
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "accountSettings")
+        self.present(vc!, animated: true, completion: nil)
                     
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "accountSettings")
-                    self.present(vc!, animated: true, completion: nil)
-                
+        
                 
             }
             
             
-            }
+    
 
         }
+    
+    
+   /*func btnLogout(_ sender: Any)
+    {
         
-    }
+            print("sign out button tapped")
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                try! firebaseAuth?.signOut()
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: \(signOutError)")
+            } catch {
+                print("Unknown error.")
+            }
+
+        
+    }*/
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     
@@ -71,11 +102,11 @@ class UpdateAccountSettingsViewController: UIViewController {
         
   //  }
 
-//    @IBAction func btnLogout(_ sender: AnyObject)
- //   {
- //       try! FIRAuth.auth()?.signOut()
- //   }
-    
+
+
+
+
+
     //@IBAction func btnReset(_ sender: Any)
     //{
         //Only examples with specific email......

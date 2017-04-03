@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var btnSignIn: UIButton!
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -28,7 +27,7 @@ class LoginViewController: UIViewController {
     @IBAction func btnSignIn(_ sender: Any)
     {
         
-        activityIndicator.isHidden = false
+       // activityIndicator.isHidden = false
         btnSignIn.isHidden = true
         
             
@@ -73,7 +72,7 @@ class LoginViewController: UIViewController {
     {
         if FIRAuth.auth()?.currentUser != nil
         {
-            activityIndicator.isHidden = true
+           // activityIndicator.isHidden = true
             btnSignIn.isHidden = false
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "menu")

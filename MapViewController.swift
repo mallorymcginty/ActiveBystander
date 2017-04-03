@@ -37,9 +37,9 @@ class MapViewController: UIViewController
         alertNodeRef = FIRDatabase.database().reference().child("alerts")
         
         
-        let pinAlertId = "alrt-1"
+       // let pinAlertId = "alrt-1"
         var pinAlert: Alert?
-        alertNodeRef.child(pinAlertId).observe(.value, with: { (snapshot: FIRDataSnapshot) in
+        alertNodeRef.child("alerts").observe(.value, with: { (snapshot: FIRDataSnapshot) in
             
             if let dictionary = snapshot.value as? [String: Any]
             {
@@ -52,9 +52,7 @@ class MapViewController: UIViewController
                 let pinLong = dictionary["longitude"] as! Double
                 let alertDisabled = dictionary["isDisabled"] as! Bool
                 
-                let alert = Alert(title: (dictionary["title"] as? String)!,
-                                  locationName: (dictionary["locationName"] as? String)!,
-                                  username: (dictionary["username"] as? String)!,
+                let alert = Alert(alertDescription: (dictionary["alertDescription"] as? String)!,
                                   coordinate: CLLocationCoordinate2D(latitude: pinLat, longitude: pinLong),
                                   isDisabled: alertDisabled
                     )

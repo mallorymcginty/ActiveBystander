@@ -30,26 +30,32 @@ class UpdateProfileViewController: UIViewController
 
     @IBAction func btnSaveProf(_ sender: Any)
     {
-        //if let DoB = txtDOB.text, let gender = txtGender.text, let RaceEth = txtRace.text, let height = txtHeight.text, let build = txtBuild.text, let hair = txtHair.text, let eyes = txtEye.text
-        //{
-            //FIRAuth.auth()?.createUser(withEmail: email, password: password) {(user, error) in
-               
-           //     {
-                    
-           //         let userValues = ["DoB": DoB, "gender": gender, "race": RaceEth, "height": height, "build": build, "hair color": hair, "eye color": eyes]
-           //         self.userNodeRef.child((user?.uid)!).updateChildValues(userValues, withCompletionBlock: {(userDBError, userDBRef) in
-                        
-          //          })
-                    
-            //
-           //         let vc = self.storyboard?.instantiateViewController(withIdentifier: "userInfo")
-         //           self.present(vc!, animated: true, completion: nil)
-          //      }
-
-        //    }
+        var ref: FIRDatabaseReference!
         
-    
-       // }
+        ref = FIRDatabase.database().reference()
+        
+        let user : [String : Any] =
+            ["DOB": txtDOB.text!,
+             "Gender": txtGender.text!,
+             "Race": txtRace.text!,
+             "Height": txtHeight.text!,
+             "Hair": txtHair.text!,
+             "Eyes": txtEye.text!]
+        
+        //Adds FB JSON node for incidentLog
+        
+        //SET FOR CURRENT USER
+        ref.child("users").childByAutoId().setValue(user)
+        
+        txtDOB.text = nil
+        txtGender.text = nil
+        txtRace.text = nil
+        txtHeight.text = nil
+        txtHair.text = nil
+        txtEye.text = nil
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "userInfo")
+        self.present(vc!, animated: true, completion: nil)
     }
    
     
