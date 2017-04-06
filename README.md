@@ -1,5 +1,5 @@
-# Week 7 - Project 6
+# Week 8 - Project 7
 
-All screens are imported (minus a couple views that will go in/on existing controllers)
+Working to resolve tableView error.
 
-Currently working on IncidentLog (table view)
+Plan to have profile info displayed, tableView cutomized, 1-click calls done, and userId linked to alerts and incidents by this weekend.
