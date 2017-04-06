@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
 
     
    let userNodeRef = FIRDatabase.database().reference().child("users")
-    
+
     
     @IBAction func btnSignUp(_ sender: Any)
 

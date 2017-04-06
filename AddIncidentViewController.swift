@@ -25,6 +25,8 @@ class AddIncidentViewController: UIViewController
     {
         
         var ref: FIRDatabaseReference!
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
         ref = FIRDatabase.database().reference()
         
@@ -33,7 +35,8 @@ class AddIncidentViewController: UIViewController
              "Address": txtAddress.text!,
              "City": txtCity.text!,
              "State": txtState.text!,
-             "Description": txtDescription.text!]
+             "Description": txtDescription.text!,
+             "userID": uid!]
         
         //Adds FB JSON node for incidentLog
         ref.child("Incidents").childByAutoId().setValue(incidentLog)
