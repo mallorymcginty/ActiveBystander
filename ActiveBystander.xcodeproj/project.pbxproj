@@ -22,6 +22,7 @@
 		3D8899BA1E63D19400CEB9E0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8899B91E63D19400CEB9E0 /* SignUpViewController.swift */; };
 		3D8899BC1E63D1A400CEB9E0 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8899BB1E63D1A400CEB9E0 /* TermsViewController.swift */; };
 		3D8899BE1E63D1B700CEB9E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8899BD1E63D1B700CEB9E0 /* MenuViewController.swift */; };
+		3D897DC81E973C5300B507CC /* IncidentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D897DC71E973C5300B507CC /* IncidentTableViewCell.swift */; };
 		3DA325731E5E9BA1000A4616 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA325721E5E9BA1000A4616 /* Assets.xcassets */; };
 		3DF06FCF1E71FF92002FB4D2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FCE1E71FF92002FB4D2 /* MapViewController.swift */; };
 		3DF06FD11E7240EC002FB4D2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD01E7240EC002FB4D2 /* Alert.swift */; };
@@ -51,6 +52,8 @@
 		3D8899B91E63D19400CEB9E0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3D8899BB1E63D1A400CEB9E0 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		3D8899BD1E63D1B700CEB9E0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		3D897DC61E96F15D00B507CC /* ActiveBystander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActiveBystander.entitlements; sourceTree = "<group>"; };
+		3D897DC71E973C5300B507CC /* IncidentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncidentTableViewCell.swift; sourceTree = "<group>"; };
 		3DA325721E5E9BA1000A4616 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DF06FCE1E71FF92002FB4D2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3DF06FD01E7240EC002FB4D2 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 				3DF06FDA1E7DF370002FB4D2 /* IncidentTableViewController.swift */,
 				3D1BFB431E8CA5E60048BDBF /* AddIncidentViewController.swift */,
 				3D1BFB4C1E908F260048BDBF /* Incidents.swift */,
+				3D897DC71E973C5300B507CC /* IncidentTableViewCell.swift */,
 			);
 			name = "Incident Log";
 			sourceTree = "<group>";
@@ -148,6 +152,7 @@
 		3D1FDAEF1E56878F00EF4FB6 /* ActiveBystander */ = {
 			isa = PBXGroup;
 			children = (
+				3D897DC61E96F15D00B507CC /* ActiveBystander.entitlements */,
 				3D1FDAF01E56878F00EF4FB6 /* AppDelegate.swift */,
 				3D1FDAF21E56878F00EF4FB6 /* ViewController.swift */,
 				3D1FDAF41E56878F00EF4FB6 /* Main.storyboard */,
@@ -227,6 +232,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = E7FP24Z587;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -326,6 +336,7 @@
 				3D8899BE1E63D1B700CEB9E0 /* MenuViewController.swift in Sources */,
 				3D1FDAF11E56878F00EF4FB6 /* AppDelegate.swift in Sources */,
 				3DF06FE11E82C7AC002FB4D2 /* PhotoSearchViewController.swift in Sources */,
+				3D897DC81E973C5300B507CC /* IncidentTableViewCell.swift in Sources */,
 				3D8899BC1E63D1A400CEB9E0 /* TermsViewController.swift in Sources */,
 				3DF06FD31E730141002FB4D2 /* MapViewExtension.swift in Sources */,
 				3D87DC0F1E6CDF8900F2B016 /* ProfileViewController.swift in Sources */,
@@ -455,6 +466,7 @@
 			baseConfigurationReference = C05108B85A54FEC96CD922AE /* Pods-ActiveBystander.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ActiveBystander/ActiveBystander.entitlements;
 				DEVELOPMENT_TEAM = E7FP24Z587;
 				INFOPLIST_FILE = ActiveBystander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,6 +481,7 @@
 			baseConfigurationReference = E28C0722136CDF08C60B59FA /* Pods-ActiveBystander.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ActiveBystander/ActiveBystander.entitlements;
 				DEVELOPMENT_TEAM = E7FP24Z587;
 				INFOPLIST_FILE = ActiveBystander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

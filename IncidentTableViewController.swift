@@ -9,23 +9,31 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class IncidentTableViewController: UITableViewController
 
 {
+    
+    
+    
+    
+    
+    
    var incidents: [Incident] = []
-    let ref = FIRDatabase.database().reference(withPath: "Incidents")
+    var ref = FIRDatabase.database().reference(withPath: "Incidents")
     
-    
+    struct Storyboard {
+        static let incidentCell = "IncidentCell"
+    }
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        //ref = FIRDatabaseReference.database().reference(withPath:"Incidents")
-        //fetchIncidents()
-        
+       
+       // self.fetchIncidents()
         
         tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -35,6 +43,7 @@ class IncidentTableViewController: UITableViewController
             
             var newIncident: [Incident] = []
             
+            //Change to child added??
             for Incidents in snapshot.children {
                 let incident = Incident(snapshot: Incidents as! FIRDataSnapshot)
                 newIncident.append(incident)
@@ -45,55 +54,43 @@ class IncidentTableViewController: UITableViewController
             
             })
         
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            //self.user = User(authData: user)
+        }
         
         
         
         
     }
     
-    
+    /*func fetchIncidents()
+    {
+        self.incidents = Incident.fetchIncidents()
+        self.tableView.reloadData()
+    }*/
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return incidents.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IncidentCell", for: indexPath)
-        let  incidentItem = incidents[indexPath.row]
+        //let cellIdentifier = "IncidentCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IncidentCell", for: indexPath) as! IncidentTableViewCell
+       let  incidentItem = incidents[indexPath.row]
         
         //HOW TO ADD IN CITY AND DESCRIPTION
-        cell.textLabel?.text = incidentItem.Category
-        cell.detailTextLabel?.text = incidentItem.Address
-        
+       // cell.textLabel?.text = incidentItem.Category
+       // cell.detailTextLabel?.text = incidentItem.Address
+      cell.lblIncCategory.text? = incidentItem.Category
+        cell.lblIncAddress.text? = incidentItem.Address
+        cell.lblIncCity.text? = incidentItem.City
+        cell.lblIncState.text? = incidentItem.State
         
          return cell
     }
     
     
         
-/*func fetchIncidents()
-{
-    refHandle = ref.child("Incidents").observe(.childAdded, with: { (snapshot) in
-    if let dictionary = snapshot.value as? [String : AnyObject]
-    {
-        print(dictionary)
-        
-        let incident = Incident()
-        
-        incident.setValuesForKeysWithDictionary(dictionary)
-        self.incident.append(incident)
-        
-        self.tableView.reloadData()
-        
-        
-
-        
-        }
-        
-        
-        
-    })
-    
-    }*/
     
 }

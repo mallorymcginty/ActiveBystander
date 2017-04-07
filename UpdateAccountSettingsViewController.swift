@@ -53,7 +53,7 @@ class UpdateAccountSettingsViewController: UIViewController {
                     
         
                 
-            }
+        
             
             
     
@@ -91,16 +91,16 @@ class UpdateAccountSettingsViewController: UIViewController {
     
     
     
-    //override func viewDidLoad() {
-    //    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    //    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
-   //     self.profileImageView.layer.borderWidth = 3.0
-    //    self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
-        
+        // profileImageView.image = FIRStorage.reference(<#T##FIRStorage#>)
+        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.0
+        profileImageView.layer.masksToBounds = true
+        self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
     
         
-  //  }
+    }
 
 
 
@@ -118,5 +118,5 @@ class UpdateAccountSettingsViewController: UIViewController {
 
     
     
-    
+}
 
