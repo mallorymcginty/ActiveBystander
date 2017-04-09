@@ -15,11 +15,6 @@ class IncidentTableViewController: UITableViewController
 
 {
     
-    
-    
-    
-    
-    
    var incidents: [Incident] = []
     var ref = FIRDatabase.database().reference(withPath: "Incidents")
     
@@ -32,9 +27,7 @@ class IncidentTableViewController: UITableViewController
     {
         super.viewDidLoad()
 
-       
-       // self.fetchIncidents()
-        
+      
         tableView.allowsMultipleSelectionDuringEditing = false
         
         //ORDER BY TIME POSTED - AUTOMATIC
@@ -64,11 +57,7 @@ class IncidentTableViewController: UITableViewController
         
     }
     
-    /*func fetchIncidents()
-    {
-        self.incidents = Incident.fetchIncidents()
-        self.tableView.reloadData()
-    }*/
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return incidents.count
@@ -79,9 +68,7 @@ class IncidentTableViewController: UITableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: "IncidentCell", for: indexPath) as! IncidentTableViewCell
        let  incidentItem = incidents[indexPath.row]
         
-        //HOW TO ADD IN CITY AND DESCRIPTION
-       // cell.textLabel?.text = incidentItem.Category
-       // cell.detailTextLabel?.text = incidentItem.Address
+        
       cell.lblIncCategory.text? = incidentItem.Category
         cell.lblIncAddress.text? = incidentItem.Address
         cell.lblIncCity.text? = incidentItem.City
@@ -91,6 +78,5 @@ class IncidentTableViewController: UITableViewController
     }
     
     
-        
     
 }

@@ -26,36 +26,25 @@ class UpdateProfileViewController: UIViewController
     
     @IBOutlet weak var btnSaveProf: UIButton!
     
-    //Profile picture
+    let userNodeRef = FIRDatabase.database().reference().child("users")
+    
 
     @IBAction func btnSaveProf(_ sender: Any)
     {
-        var ref: FIRDatabaseReference!
-        
-        ref = FIRDatabase.database().reference()
-        
-        let user : [String : Any] =
-            ["DOB": txtDOB.text!,
-             "Gender": txtGender.text!,
-             "Race": txtRace.text!,
-             "Height": txtHeight.text!,
-             "Hair": txtHair.text!,
-             "Eyes": txtEye.text!]
-        
-        //Adds FB JSON node for incidentLog
-        
-        //SET FOR CURRENT USER
-        ref.child("users").childByAutoId().setValue(user)
-        
-        txtDOB.text = nil
-        txtGender.text = nil
-        txtRace.text = nil
-        txtHeight.text = nil
-        txtHair.text = nil
-        txtEye.text = nil
+        if let DoB = txtDOB.text, let gender = txtGender.text, let RaceEth = txtRace.text, let height = txtHeight.text, let build = txtBuild.text, let hair = txtHair.text, let eyes = txtEye.text
+        {
+            let user = FIRAuth.auth()?.currentUser
+            
+            let userValues = ["DoB": DoB, "gender": gender, "race": RaceEth, "height": height, "build": build, "hair color": hair, "eye color": eyes]
+            self.userNodeRef.child((user?.uid)!).updateChildValues(userValues, withCompletionBlock: {(userDBError, userDBRef) in
+            })
+            
+            
+            
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "userInfo")
         self.present(vc!, animated: true, completion: nil)
+        }
     }
    
     
@@ -71,8 +60,9 @@ class UpdateProfileViewController: UIViewController
         super.viewDidLoad()
 
         // profileImageView.image = FIRStorage.reference(<#T##FIRStorage#>)
-        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.0
-        profileImageView.layer.masksToBounds = true
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+        self.profileImageView.layer.borderWidth = 3.0
+        self.profileImageView.layer.masksToBounds = true
         self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
 
         
@@ -83,6 +73,8 @@ class UpdateProfileViewController: UIViewController
     @IBAction func btnLogout(_ sender: AnyObject)
     {
         try! FIRAuth.auth()?.signOut()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
+        self.present(vc!, animated: true, completion: nil)
     }
   
 
