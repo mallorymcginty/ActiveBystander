@@ -27,10 +27,12 @@ class IncidentTableViewCell: UITableViewCell
     
     @IBAction func btnIncDesc(_ sender: UIButton)
     {
+        //Issue showing description
+        //Reference the selected incident??
        let alertTitle = "Incident Info"
         let alertMessage = incidents.description
         
-        let alertController = UIAlertController(title: alertTitle, message: (alertMessage), preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
         {
@@ -38,16 +40,29 @@ class IncidentTableViewCell: UITableViewCell
             print("OK")
         }
         alertController.addAction(okAction)
-        /*presentViewController(alertController, animated: true) {
-            //Do something when alert view is presented
-        }*/
+      parentViewController?.present(alertController, animated: true, completion: nil)
+       
+
+        
+        
     }
-   
-    
-    
-    
-    
+}
+
+
+extension UIView {
+    var parentViewController: IncidentTableViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is IncidentTableViewController {
+                return parentResponder as! IncidentTableViewController!
+            }
+        }
+        return nil
+    }
+}
+
 
  
     
-}
+

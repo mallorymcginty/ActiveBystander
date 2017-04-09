@@ -22,6 +22,8 @@ class AccountSettingsViewController: UIViewController
     @IBOutlet weak var switchNotifications: UISwitch!
     
     
+     let userNodeRef = FIRDatabase.database().reference().child("users")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +33,40 @@ class AccountSettingsViewController: UIViewController
         profileImageView.layer.masksToBounds = true
         self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
 
+        let user = FIRAuth.auth()?.currentUser?.uid
         
-        
+        FIRDatabase.database().reference().child("users").child(user!).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]
+            {
+                self.lblFirst.text = dictionary["first"] as? String
+                self.lblLast.text = dictionary["last"] as? String
+                self.lblPhone.text = dictionary["user phone"] as? String
+                self.lblCampusSafety.text = dictionary["campus phone"] as? String
+                self.lblEmail.text = dictionary["email"] as? String
+                
+            }
+            
+            
+        })
         
     }
 
+    
+    
     @IBAction func btnLogout(_ sender: AnyObject)
     {
         try! FIRAuth.auth()?.signOut()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
+        self.present(vc!, animated: true, completion: nil)
     }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+       
+    }
+    
     
     
     

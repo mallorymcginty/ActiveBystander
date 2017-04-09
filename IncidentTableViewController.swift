@@ -26,7 +26,7 @@ class IncidentTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        tableView.separatorColor = UIColor.blue
       
         tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -80,3 +80,5 @@ class IncidentTableViewController: UITableViewController
     
     
 }
+
+

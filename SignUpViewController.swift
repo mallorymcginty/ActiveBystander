@@ -35,10 +35,37 @@ class SignUpViewController: UIViewController {
   
         if let email = txtEmail.text, let password = txtPassword.text, let confirm = txtConfirm.text, let first = txtFirst.text, let last = txtLast.text
          {
+            
+            
+            
+            
             FIRAuth.auth()?.createUser(withEmail: email, password: password) {(user, error) in
                 if user != nil
                 {
+                    if password != confirm
+                    {
+                        let alertTitle = "Passwords do not match!"
+                        let alertMessage = ("The fields 'Password' and 'Confirm' must match!")
+                        
+                        
+                        
+                        let alertController = UIAlertController(title: alertTitle, message: (alertMessage), preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        // create an OK button for dismissing the alert
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                            (result : UIAlertAction) -> Void in
+                            print("OK") }
+
+                        // add a button to the alert pop-up
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
+                        
+                        return // this exit the function and prevent the rest of the code below from running
+                    }
             
+                    
+                                       
+                    
                     
                     let userValues = ["first": first, "last": last, "email": email]
                     self.userNodeRef.child((user?.uid)!).updateChildValues(userValues, withCompletionBlock: {(userDBError, userDBRef) in

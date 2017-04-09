@@ -122,12 +122,12 @@
 			name = "Incident Log";
 			sourceTree = "<group>";
 		};
-		3D1BFB4B1E8CA6F20048BDBF /* AI/API */ = {
+		3D1BFB4B1E8CA6F20048BDBF /* PhotoSearch */ = {
 			isa = PBXGroup;
 			children = (
 				3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */,
 			);
-			name = AI/API;
+			name = PhotoSearch;
 			sourceTree = "<group>";
 		};
 		3D1FDAE41E56878E00EF4FB6 = {
@@ -173,7 +173,7 @@
 				3D1BFB481E8CA6AF0048BDBF /* Profile and Settings */,
 				3D1BFB491E8CA6C80048BDBF /* Maps and Alerts */,
 				3D1BFB4A1E8CA6E30048BDBF /* Incident Log */,
-				3D1BFB4B1E8CA6F20048BDBF /* AI/API */,
+				3D1BFB4B1E8CA6F20048BDBF /* PhotoSearch */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -21,8 +22,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var lblHair: UILabel!
     @IBOutlet weak var lblEye: UILabel!
  
-  
-    
+    var ref: FIRDatabaseReference!
+    //ref = FIRDatabase.database().reference()
+    let userNodeRef = FIRDatabase.database().reference().child("users")
     
     
     override func viewDidLoad() {
@@ -33,12 +35,36 @@ class ProfileViewController: UIViewController {
         profileImageView.layer.masksToBounds = true
         self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
         
+        
+        let user = FIRAuth.auth()?.currentUser?.uid
+    
+        
+       
+        FIRDatabase.database().reference().child("users").child(user!).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]
+            {
+                self.lblDOB.text = dictionary["DoB"] as? String
+                self.lblEye.text = dictionary["eye color"] as? String
+                self.lblGender.text = dictionary["gender"] as? String
+                self.lblHair.text = dictionary["hair color"] as? String
+                self.lblRace.text = dictionary["race"] as? String
+                self.lblBuild.text = dictionary["build"] as? String
+                self.lblHeight.text = dictionary["height"] as? String
+            }
+        
+        
+        })
+
+        
+        
         }
 
     
     @IBAction func btnLogout(_ sender: AnyObject)
     {
        try! FIRAuth.auth()?.signOut()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "login")
+        self.present(vc!, animated: true, completion: nil)
     }
     
     
