@@ -12,7 +12,12 @@ import Firebase
 
 class MenuViewController: UIViewController {
     
-    
+    //Doesnt work..
+    @IBAction func btnFakeCall(_ sender: AnyObject)
+    {
+        guard let number = URL(string: "tel:6088976667") else { return }
+        UIApplication.shared.open(number, options: [:], completionHandler: nil)
+    }
     
     
     

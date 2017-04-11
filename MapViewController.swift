@@ -27,9 +27,16 @@ class MapViewController: UIViewController
 
         self.mapView.delegate = self
             
-            let initialLocation = CLLocation(latitude: 43.038611, longitude: -87.928759)
-            centerMapOnLocation(location: initialLocation)
-        
+        func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+            let location = locations.last as! CLLocation
+            //How to zoom in on location?
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+            let viewRegion = MKCoordinateRegionMakeWithDistance(center, 200, 200)
+
+            
+            self.mapView.setRegion(viewRegion, animated: true)
+        }
         
 
         
@@ -76,7 +83,7 @@ class MapViewController: UIViewController
         
     
     
-   
+
     
     let regionRadius: CLLocationDistance = 500
     func centerMapOnLocation(location: CLLocation)

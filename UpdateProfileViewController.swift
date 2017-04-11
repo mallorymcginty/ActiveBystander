@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 
-class UpdateProfileViewController: UIViewController
+class UpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -24,9 +24,16 @@ class UpdateProfileViewController: UIViewController
     @IBOutlet weak var txtHair: UITextField!
     @IBOutlet weak var txtEye: UITextField!
     
+
+    
     @IBOutlet weak var btnSaveProf: UIButton!
     
+    
+    
+    
     let userNodeRef = FIRDatabase.database().reference().child("users")
+    
+    let storage = FIRStorage.storage()
     
 
     @IBAction func btnSaveProf(_ sender: Any)
@@ -46,10 +53,50 @@ class UpdateProfileViewController: UIViewController
         self.present(vc!, animated: true, completion: nil)
         }
     }
-   
     
+    @IBAction func btnUploadProf(_ sender: UIButton)
+    {
+        //saving to FB and show in the profileImageView
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+        {
+            let imgPicker = UIImagePickerController()
+            imgPicker.delegate = self
+            imgPicker.sourceType = .photoLibrary
+            imgPicker.allowsEditing = true
+            
+            self.present(imgPicker, animated: true, completion: nil)
+        }
+        
+       
+        //Error with datatype
+        func  imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
+        {
+        
+            let user = FIRAuth.auth()?.currentUser
+            
+            profileImageView.image = image
+            self.dismiss(animated: true, completion: nil)
+            var data = NSData()
+            data = UIImageJPEGRepresentation(profileImageView.image!, 0.8)! as NSData
+            let filePath = FIRAuth.auth()!.currentUser!.uid
+            let metaData = FIRStorageMetadata()
+            metaData.contentType = "image/jpg"
+            self.storage.reference().child(filePath).put(data as Data, metadata: metaData) {(metaData,error) in
+                if let error = error
+                {
+                    print(error.localizedDescription)
+                    return
+                }
+                else
+                {
+                    let downloadURL = metaData!.downloadURL()!.absoluteString
+                    
+                    self.userNodeRef.child((user?.uid)!).updateChildValues(["userPhoto": downloadURL])
+                }
+            }
     
-    
+        }
+    }
     
     
     
@@ -76,4 +123,6 @@ class UpdateProfileViewController: UIViewController
     }
   
 
+
 }
+
