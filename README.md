@@ -1,3 +1,3 @@
-# Week 8 - Project 9
+# Week 9 - Project 8
 
 Currently implementing Photo Search feature
