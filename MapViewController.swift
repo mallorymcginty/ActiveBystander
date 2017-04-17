@@ -32,10 +32,8 @@ class MapViewController: UIViewController
             //How to zoom in on location?
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-            let viewRegion = MKCoordinateRegionMakeWithDistance(center, 200, 200)
-
-            
-            self.mapView.setRegion(viewRegion, animated: true)
+           
+            self.mapView.setRegion(region, animated: true)
         }
         
 

@@ -16,6 +16,7 @@
 		3D1FDAF61E56878F00EF4FB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FDAF41E56878F00EF4FB6 /* Main.storyboard */; };
 		3D1FDAF91E56878F00EF4FB6 /* ActiveBystander.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FDAF71E56878F00EF4FB6 /* ActiveBystander.xcdatamodeld */; };
 		3D1FDAFE1E56878F00EF4FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FDAFC1E56878F00EF4FB6 /* LaunchScreen.storyboard */; };
+		3D2CF0991EA160A300B247AA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2CF0981EA160A300B247AA /* PhotoCell.swift */; };
 		3D87DC0F1E6CDF8900F2B016 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87DC0E1E6CDF8900F2B016 /* ProfileViewController.swift */; };
 		3D87DC111E6CDF9D00F2B016 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87DC101E6CDF9D00F2B016 /* UpdateProfileViewController.swift */; };
 		3D8899B81E63D18100CEB9E0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8899B71E63D18100CEB9E0 /* LoginViewController.swift */; };
@@ -46,6 +47,7 @@
 		3D1FDAF81E56878F00EF4FB6 /* ActiveBystander.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActiveBystander.xcdatamodel; sourceTree = "<group>"; };
 		3D1FDAFD1E56878F00EF4FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D1FDAFF1E56878F00EF4FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D2CF0981EA160A300B247AA /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		3D87DC0E1E6CDF8900F2B016 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3D87DC101E6CDF9D00F2B016 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		3D8899B71E63D18100CEB9E0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */,
+				3D2CF0981EA160A300B247AA /* PhotoCell.swift */,
 			);
 			name = PhotoSearch;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				3DF06FDB1E7DF370002FB4D2 /* IncidentTableViewController.swift in Sources */,
 				3D1FDAF31E56878F00EF4FB6 /* ViewController.swift in Sources */,
 				3D1FDAF91E56878F00EF4FB6 /* ActiveBystander.xcdatamodeld in Sources */,
+				3D2CF0991EA160A300B247AA /* PhotoCell.swift in Sources */,
 				3DF06FCF1E71FF92002FB4D2 /* MapViewController.swift in Sources */,
 				3D8899BE1E63D1B700CEB9E0 /* MenuViewController.swift in Sources */,
 				3D1FDAF11E56878F00EF4FB6 /* AppDelegate.swift in Sources */,
