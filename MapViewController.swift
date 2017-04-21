@@ -57,7 +57,7 @@ class MapViewController: UIViewController
                 let pinLong = dictionary["longitude"] as! Double
                 let alertDisabled = dictionary["isDisabled"] as! Bool
                 
-                let alert = Alert(alertDescription: (dictionary["alertDescription"] as? String)!,
+                let alert = Alert(title: (dictionary["first"] as? String)!, alertDescription: (dictionary["alertDescription"] as? String)!,
                                   coordinate: CLLocationCoordinate2D(latitude: pinLat, longitude: pinLong),
                                   isDisabled: alertDisabled
                     )

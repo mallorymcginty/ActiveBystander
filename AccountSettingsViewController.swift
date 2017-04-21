@@ -43,6 +43,8 @@ class AccountSettingsViewController: UIViewController
                 self.lblPhone.text = dictionary["user phone"] as? String
                 self.lblCampusSafety.text = dictionary["campus phone"] as? String
                 self.lblEmail.text = dictionary["email"] as? String
+                //Convert?
+                self.profileImageView.image = dictionary["userPhoto"] as? UIImage
                 
             }
             

@@ -28,20 +28,10 @@ class IncidentTableViewCell: UITableViewCell
     @IBAction func btnIncDesc(_ sender: UIButton)
     {
         
+
+        let alertTitle = "Incident Info"
+        let alertMessage = self.btnIncDesc.accessibilityLabel
         
-        
-        /*ref.child("Incidents").child(description).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            
-               let alertMessageTwo = snapshot.value as! String*/
-            
-        
-        //Issue showing description
-        //Reference the selected incident??
-        
-       let alertTitle = "Incident Info"
-        let alertMessage = incidents.description
-        //let alertMessage = alertMessageTwo
         
         
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
@@ -58,13 +48,7 @@ class IncidentTableViewCell: UITableViewCell
         }
         
             
-        //)
-
         
-                
-        
-        
-//}
 }
 
 

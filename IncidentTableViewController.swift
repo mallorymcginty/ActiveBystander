@@ -26,7 +26,13 @@ class IncidentTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        tableView.separatorColor = UIColor.blue
+        
+        tableView.separatorStyle = .none
+    
+        tableView.allowsSelection = false
+        
+        tableView.contentInset.top = 15
+        tableView.backgroundColor = UIColor(red:0.38, green:0.52, blue:0.69, alpha:1.0)
       
         tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -69,10 +75,12 @@ class IncidentTableViewController: UITableViewController
        let  incidentItem = incidents[indexPath.row]
         
         
-      cell.lblIncCategory.text? = incidentItem.Category
+        cell.lblIncCategory.text? = incidentItem.Category
         cell.lblIncAddress.text? = incidentItem.Address
         cell.lblIncCity.text? = incidentItem.City
         cell.lblIncState.text? = incidentItem.State
+        
+        cell.btnIncDesc.accessibilityLabel = incidentItem.Description
         
          return cell
     }

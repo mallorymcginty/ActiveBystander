@@ -15,7 +15,8 @@ class AddIncidentViewController: UIViewController
     @IBOutlet weak var txtAddress: UITextField!
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtState: UITextField!
-    @IBOutlet weak var txtDescription: UITextField!
+    @IBOutlet weak var txtDescription: UITextView!
+
     
     @IBOutlet weak var btnPostIncident: UIButton!
     

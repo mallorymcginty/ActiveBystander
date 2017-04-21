@@ -60,10 +60,25 @@ class UpdateAccountSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        // profileImageView.image = FIRStorage.reference(<#T##FIRStorage#>)
         profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.0
         profileImageView.layer.masksToBounds = true
         self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
+        
+        let user = FIRAuth.auth()?.currentUser?.uid
+        
+        FIRDatabase.database().reference().child("users").child(user!).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]
+            {
+                //Convert?
+                self.profileImageView.image = dictionary["userPhoto"] as? UIImage
+                
+            }
+            
+        })
+
     
         
     }

@@ -34,6 +34,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     let userNodeRef = FIRDatabase.database().reference().child("users")
     
     let storage = FIRStorage.storage()
+    //let storageRef = FIRStorageReference!
     
 
     @IBAction func btnSaveProf(_ sender: Any)
@@ -68,7 +69,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         }
         
        
-        //Error with datatype
+        //Error with datatype - think I fixed it unable to test
         func  imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
         {
         
@@ -80,7 +81,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
             data = UIImageJPEGRepresentation(profileImageView.image!, 0.8)! as NSData
             let filePath = FIRAuth.auth()!.currentUser!.uid
             let metaData = FIRStorageMetadata()
-            metaData.contentType = "image/jpg"
+            metaData.contentType = "image/jpeg"
             self.storage.reference().child(filePath).put(data as Data, metadata: metaData) {(metaData,error) in
                 if let error = error
                 {
@@ -96,12 +97,58 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
             }
     
         }
+        
+        //OR?
+        
+        /* // get the image in the imageView and save it to the Photo Album
+            let imageData = UIImageJPEGRepresentation(imgPhoto.image!, 0.8) // compression quality
+            let compressedJPEGImage = UIImage(data: imageData!)
+            UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
+ 
+            // save to Firebase Storage - to current user?
+            //let guid =  "test_id" // substitute with the current user's ID
+ 
+         let guid = UUID().uuidString // STEP 1: Generate new UUID
+ 
+ 
+         let imagePath = "\(guid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+         let metadata = FIRStorageMetadata()
+         metadata.contentType = "image/jpeg"
+ 
+            self.storageRef.child(imagePath)
+            .put(imageData!, metadata: metadata) {  (metadata, error) in
+            if let error = error 
+         {
+            print("Error uploading: \(error)")
+            return
+         }
+ 
+            // STEP 2b: Get the image URL
+            let imageUrl = metadata?.downloadURL()?.absoluteString
+ 
+            // STEP 3: Add code to save the imageURL to the Realtime database
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+ 
+            let imageNode : [String : String] = ["ImageUrl": imageUrl!]
+ 
+            // add to the Firebase JSON node for MyUsers
+            ref.child("users").childByAutoId().setValue(imageNode) /**/
+ 
+         }   */
+
+ 
+ 
+ 
     }
-    
-    
-    
-    
-    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     override func viewDidLoad()
     {
         super.viewDidLoad()

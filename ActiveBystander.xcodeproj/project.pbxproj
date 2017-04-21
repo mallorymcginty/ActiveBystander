@@ -17,6 +17,7 @@
 		3D1FDAF91E56878F00EF4FB6 /* ActiveBystander.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D1FDAF71E56878F00EF4FB6 /* ActiveBystander.xcdatamodeld */; };
 		3D1FDAFE1E56878F00EF4FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D1FDAFC1E56878F00EF4FB6 /* LaunchScreen.storyboard */; };
 		3D2CF0991EA160A300B247AA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2CF0981EA160A300B247AA /* PhotoCell.swift */; };
+		3D67588B1EA662A600AC6611 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67588A1EA662A600AC6611 /* UploadViewController.swift */; };
 		3D87DC0F1E6CDF8900F2B016 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87DC0E1E6CDF8900F2B016 /* ProfileViewController.swift */; };
 		3D87DC111E6CDF9D00F2B016 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87DC101E6CDF9D00F2B016 /* UpdateProfileViewController.swift */; };
 		3D8899B81E63D18100CEB9E0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8899B71E63D18100CEB9E0 /* LoginViewController.swift */; };
@@ -25,6 +26,14 @@
 		3D8899BE1E63D1B700CEB9E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8899BD1E63D1B700CEB9E0 /* MenuViewController.swift */; };
 		3D897DC81E973C5300B507CC /* IncidentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D897DC71E973C5300B507CC /* IncidentTableViewCell.swift */; };
 		3DA325731E5E9BA1000A4616 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA325721E5E9BA1000A4616 /* Assets.xcassets */; };
+		3DAEEEBC1EA9531D00551B80 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEB81EA9531D00551B80 /* Alamofire.framework */; };
+		3DAEEEBD1EA9531D00551B80 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEB81EA9531D00551B80 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DAEEEBE1EA9531D00551B80 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEB91EA9531D00551B80 /* AlamofireImage.framework */; };
+		3DAEEEBF1EA9531D00551B80 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEB91EA9531D00551B80 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DAEEEC01EA9531D00551B80 /* AlchemyDataNewsV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */; };
+		3DAEEEC11EA9531D00551B80 /* AlchemyDataNewsV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DAEEEC21EA9531D00551B80 /* AlchemyLanguageV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */; };
+		3DAEEEC31EA9531D00551B80 /* AlchemyLanguageV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DF06FCF1E71FF92002FB4D2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FCE1E71FF92002FB4D2 /* MapViewController.swift */; };
 		3DF06FD11E7240EC002FB4D2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD01E7240EC002FB4D2 /* Alert.swift */; };
 		3DF06FD31E730141002FB4D2 /* MapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD21E730141002FB4D2 /* MapViewExtension.swift */; };
@@ -34,6 +43,23 @@
 		3DF06FE11E82C7AC002FB4D2 /* PhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */; };
 		55987DED5B18B4D0C3D93815 /* Pods_ActiveBystander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0CBEFC61CD0C2F640F1310 /* Pods_ActiveBystander.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3D6758981EA865C900AC6611 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DAEEEBD1EA9531D00551B80 /* Alamofire.framework in Embed Frameworks */,
+				3DAEEEC31EA9531D00551B80 /* AlchemyLanguageV1.framework in Embed Frameworks */,
+				3DAEEEC11EA9531D00551B80 /* AlchemyDataNewsV1.framework in Embed Frameworks */,
+				3DAEEEBF1EA9531D00551B80 /* AlamofireImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3D1BFB411E8C98240048BDBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -48,6 +74,7 @@
 		3D1FDAFD1E56878F00EF4FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D1FDAFF1E56878F00EF4FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D2CF0981EA160A300B247AA /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		3D67588A1EA662A600AC6611 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		3D87DC0E1E6CDF8900F2B016 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3D87DC101E6CDF9D00F2B016 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		3D8899B71E63D18100CEB9E0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +84,10 @@
 		3D897DC61E96F15D00B507CC /* ActiveBystander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActiveBystander.entitlements; sourceTree = "<group>"; };
 		3D897DC71E973C5300B507CC /* IncidentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncidentTableViewCell.swift; sourceTree = "<group>"; };
 		3DA325721E5E9BA1000A4616 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DAEEEB81EA9531D00551B80 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		3DAEEEB91EA9531D00551B80 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyDataNewsV1.framework; path = Carthage/Build/iOS/AlchemyDataNewsV1.framework; sourceTree = "<group>"; };
+		3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyLanguageV1.framework; path = Carthage/Build/iOS/AlchemyLanguageV1.framework; sourceTree = "<group>"; };
 		3DF06FCE1E71FF92002FB4D2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3DF06FD01E7240EC002FB4D2 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3DF06FD21E730141002FB4D2 /* MapViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewExtension.swift; sourceTree = "<group>"; };
@@ -74,7 +105,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DAEEEC01EA9531D00551B80 /* AlchemyDataNewsV1.framework in Frameworks */,
+				3DAEEEBE1EA9531D00551B80 /* AlamofireImage.framework in Frameworks */,
 				55987DED5B18B4D0C3D93815 /* Pods_ActiveBystander.framework in Frameworks */,
+				3DAEEEC21EA9531D00551B80 /* AlchemyLanguageV1.framework in Frameworks */,
+				3DAEEEBC1EA9531D00551B80 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +164,7 @@
 			children = (
 				3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */,
 				3D2CF0981EA160A300B247AA /* PhotoCell.swift */,
+				3D67588A1EA662A600AC6611 /* UploadViewController.swift */,
 			);
 			name = PhotoSearch;
 			sourceTree = "<group>";
@@ -136,6 +172,7 @@
 		3D1FDAE41E56878E00EF4FB6 = {
 			isa = PBXGroup;
 			children = (
+				3DAEEEC41EA9532B00551B80 /* Frameworks */,
 				3D8899B61E63D06F00CEB9E0 /* Controllers */,
 				3D1FDAEF1E56878F00EF4FB6 /* ActiveBystander */,
 				3D1FDAEE1E56878F00EF4FB6 /* Products */,
@@ -171,14 +208,25 @@
 		3D8899B61E63D06F00CEB9E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D1BFB471E8CA6950048BDBF /* Getting Started */,
 				3D8899BD1E63D1B700CEB9E0 /* MenuViewController.swift */,
+				3D1BFB471E8CA6950048BDBF /* Getting Started */,
 				3D1BFB481E8CA6AF0048BDBF /* Profile and Settings */,
 				3D1BFB491E8CA6C80048BDBF /* Maps and Alerts */,
 				3D1BFB4A1E8CA6E30048BDBF /* Incident Log */,
 				3D1BFB4B1E8CA6F20048BDBF /* PhotoSearch */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3DAEEEC41EA9532B00551B80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DAEEEB81EA9531D00551B80 /* Alamofire.framework */,
+				3DAEEEB91EA9531D00551B80 /* AlamofireImage.framework */,
+				3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */,
+				3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		57E3AAFC0593A691FF75EC3B /* Frameworks */ = {
@@ -211,6 +259,7 @@
 				3D1FDAEB1E56878E00EF4FB6 /* Resources */,
 				B15DEE5CAEE7C76FF1148110 /* [CP] Embed Pods Frameworks */,
 				864D98F90C24CBFDB2213E66 /* [CP] Copy Pods Resources */,
+				3D6758981EA865C900AC6611 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1BFB511E91C3250048BDBF /* AddAlertViewController.swift in Sources */,
+				3D67588B1EA662A600AC6611 /* UploadViewController.swift in Sources */,
 				3DF06FD71E7DEA12002FB4D2 /* UpdateAccountSettingsViewController.swift in Sources */,
 				3DF06FD51E7DE9E8002FB4D2 /* AccountSettingsViewController.swift in Sources */,
 				3D8899B81E63D18100CEB9E0 /* LoginViewController.swift in Sources */,
@@ -472,6 +522,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActiveBystander/ActiveBystander.entitlements;
 				DEVELOPMENT_TEAM = E7FP24Z587;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ActiveBystander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ActiveBystander;
@@ -487,6 +541,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActiveBystander/ActiveBystander.entitlements;
 				DEVELOPMENT_TEAM = E7FP24Z587;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ActiveBystander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ActiveBystander;

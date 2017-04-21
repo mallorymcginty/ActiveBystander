@@ -27,6 +27,15 @@ class ProfileViewController: UIViewController {
     let userNodeRef = FIRDatabase.database().reference().child("users")
     
     
+    var storageRef: FIRStorageReference!
+    
+  
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +59,9 @@ class ProfileViewController: UIViewController {
                 self.lblRace.text = dictionary["race"] as? String
                 self.lblBuild.text = dictionary["build"] as? String
                 self.lblHeight.text = dictionary["height"] as? String
+                //Will this display the image
+                //Or do I need to convert from url to image
+                self.profileImageView.image = dictionary["userPhoto"] as? UIImage
             }
         
         

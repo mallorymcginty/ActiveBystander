@@ -18,13 +18,15 @@ class Alert: NSObject, MKAnnotation
     let alertDescription: String?
     let coordinate: CLLocationCoordinate2D
     let isDisabled: Bool
+    let title: String?
     
-    init(alertDescription: String, coordinate: CLLocationCoordinate2D, isDisabled: Bool)
+    init(title: String, alertDescription: String, coordinate: CLLocationCoordinate2D, isDisabled: Bool)
     {
         //change to match above
         self.alertDescription = alertDescription
         self.coordinate = coordinate
         self.isDisabled = isDisabled
+        self.title = title
         
         super.init()
         
