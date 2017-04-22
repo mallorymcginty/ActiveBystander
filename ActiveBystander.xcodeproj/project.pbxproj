@@ -34,13 +34,18 @@
 		3DAEEEC11EA9531D00551B80 /* AlchemyDataNewsV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DAEEEC21EA9531D00551B80 /* AlchemyLanguageV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */; };
 		3DAEEEC31EA9531D00551B80 /* AlchemyLanguageV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DAEEEC61EA99AD700551B80 /* ImageUrlItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEEEC51EA99AD700551B80 /* ImageUrlItem.swift */; };
+		3DAEEEC81EA99D1600551B80 /* PhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEEEC71EA99D1600551B80 /* PhotoSearchViewController.swift */; };
+		3DAEEECB1EA99E0E00551B80 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEC91EA99E0E00551B80 /* RestKit.framework */; };
+		3DAEEECC1EA99E0E00551B80 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEEC91EA99E0E00551B80 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DAEEECD1EA99E0E00551B80 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEECA1EA99E0E00551B80 /* VisualRecognitionV3.framework */; };
+		3DAEEECE1EA99E0E00551B80 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAEEECA1EA99E0E00551B80 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3DF06FCF1E71FF92002FB4D2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FCE1E71FF92002FB4D2 /* MapViewController.swift */; };
 		3DF06FD11E7240EC002FB4D2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD01E7240EC002FB4D2 /* Alert.swift */; };
 		3DF06FD31E730141002FB4D2 /* MapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD21E730141002FB4D2 /* MapViewExtension.swift */; };
 		3DF06FD51E7DE9E8002FB4D2 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD41E7DE9E8002FB4D2 /* AccountSettingsViewController.swift */; };
 		3DF06FD71E7DEA12002FB4D2 /* UpdateAccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FD61E7DEA12002FB4D2 /* UpdateAccountSettingsViewController.swift */; };
 		3DF06FDB1E7DF370002FB4D2 /* IncidentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FDA1E7DF370002FB4D2 /* IncidentTableViewController.swift */; };
-		3DF06FE11E82C7AC002FB4D2 /* PhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */; };
 		55987DED5B18B4D0C3D93815 /* Pods_ActiveBystander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0CBEFC61CD0C2F640F1310 /* Pods_ActiveBystander.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +57,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3DAEEEBD1EA9531D00551B80 /* Alamofire.framework in Embed Frameworks */,
+				3DAEEECE1EA99E0E00551B80 /* VisualRecognitionV3.framework in Embed Frameworks */,
+				3DAEEECC1EA99E0E00551B80 /* RestKit.framework in Embed Frameworks */,
 				3DAEEEC31EA9531D00551B80 /* AlchemyLanguageV1.framework in Embed Frameworks */,
 				3DAEEEC11EA9531D00551B80 /* AlchemyDataNewsV1.framework in Embed Frameworks */,
 				3DAEEEBF1EA9531D00551B80 /* AlamofireImage.framework in Embed Frameworks */,
@@ -88,13 +95,16 @@
 		3DAEEEB91EA9531D00551B80 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyDataNewsV1.framework; path = Carthage/Build/iOS/AlchemyDataNewsV1.framework; sourceTree = "<group>"; };
 		3DAEEEBB1EA9531D00551B80 /* AlchemyLanguageV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlchemyLanguageV1.framework; path = Carthage/Build/iOS/AlchemyLanguageV1.framework; sourceTree = "<group>"; };
+		3DAEEEC51EA99AD700551B80 /* ImageUrlItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUrlItem.swift; sourceTree = "<group>"; };
+		3DAEEEC71EA99D1600551B80 /* PhotoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewController.swift; sourceTree = "<group>"; };
+		3DAEEEC91EA99E0E00551B80 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		3DAEEECA1EA99E0E00551B80 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		3DF06FCE1E71FF92002FB4D2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3DF06FD01E7240EC002FB4D2 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3DF06FD21E730141002FB4D2 /* MapViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewExtension.swift; sourceTree = "<group>"; };
 		3DF06FD41E7DE9E8002FB4D2 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		3DF06FD61E7DEA12002FB4D2 /* UpdateAccountSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAccountSettingsViewController.swift; sourceTree = "<group>"; };
 		3DF06FDA1E7DF370002FB4D2 /* IncidentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncidentTableViewController.swift; sourceTree = "<group>"; };
-		3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSearchViewController.swift; sourceTree = "<group>"; };
 		4E0CBEFC61CD0C2F640F1310 /* Pods_ActiveBystander.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActiveBystander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05108B85A54FEC96CD922AE /* Pods-ActiveBystander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActiveBystander.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActiveBystander/Pods-ActiveBystander.debug.xcconfig"; sourceTree = "<group>"; };
 		E28C0722136CDF08C60B59FA /* Pods-ActiveBystander.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActiveBystander.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActiveBystander/Pods-ActiveBystander.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,10 +116,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DAEEEC01EA9531D00551B80 /* AlchemyDataNewsV1.framework in Frameworks */,
+				3DAEEECD1EA99E0E00551B80 /* VisualRecognitionV3.framework in Frameworks */,
 				3DAEEEBE1EA9531D00551B80 /* AlamofireImage.framework in Frameworks */,
 				55987DED5B18B4D0C3D93815 /* Pods_ActiveBystander.framework in Frameworks */,
 				3DAEEEC21EA9531D00551B80 /* AlchemyLanguageV1.framework in Frameworks */,
 				3DAEEEBC1EA9531D00551B80 /* Alamofire.framework in Frameworks */,
+				3DAEEECB1EA99E0E00551B80 /* RestKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,8 +174,9 @@
 		3D1BFB4B1E8CA6F20048BDBF /* PhotoSearch */ = {
 			isa = PBXGroup;
 			children = (
-				3DF06FE01E82C7AC002FB4D2 /* PhotoSearchViewController.swift */,
+				3DAEEEC71EA99D1600551B80 /* PhotoSearchViewController.swift */,
 				3D2CF0981EA160A300B247AA /* PhotoCell.swift */,
+				3DAEEEC51EA99AD700551B80 /* ImageUrlItem.swift */,
 				3D67588A1EA662A600AC6611 /* UploadViewController.swift */,
 			);
 			name = PhotoSearch;
@@ -172,6 +185,8 @@
 		3D1FDAE41E56878E00EF4FB6 = {
 			isa = PBXGroup;
 			children = (
+				3DAEEEC91EA99E0E00551B80 /* RestKit.framework */,
+				3DAEEECA1EA99E0E00551B80 /* VisualRecognitionV3.framework */,
 				3DAEEEC41EA9532B00551B80 /* Frameworks */,
 				3D8899B61E63D06F00CEB9E0 /* Controllers */,
 				3D1FDAEF1E56878F00EF4FB6 /* ActiveBystander */,
@@ -378,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1BFB511E91C3250048BDBF /* AddAlertViewController.swift in Sources */,
+				3DAEEEC81EA99D1600551B80 /* PhotoSearchViewController.swift in Sources */,
 				3D67588B1EA662A600AC6611 /* UploadViewController.swift in Sources */,
 				3DF06FD71E7DEA12002FB4D2 /* UpdateAccountSettingsViewController.swift in Sources */,
 				3DF06FD51E7DE9E8002FB4D2 /* AccountSettingsViewController.swift in Sources */,
@@ -389,7 +405,7 @@
 				3DF06FCF1E71FF92002FB4D2 /* MapViewController.swift in Sources */,
 				3D8899BE1E63D1B700CEB9E0 /* MenuViewController.swift in Sources */,
 				3D1FDAF11E56878F00EF4FB6 /* AppDelegate.swift in Sources */,
-				3DF06FE11E82C7AC002FB4D2 /* PhotoSearchViewController.swift in Sources */,
+				3DAEEEC61EA99AD700551B80 /* ImageUrlItem.swift in Sources */,
 				3D897DC81E973C5300B507CC /* IncidentTableViewCell.swift in Sources */,
 				3D8899BC1E63D1A400CEB9E0 /* TermsViewController.swift in Sources */,
 				3DF06FD31E730141002FB4D2 /* MapViewExtension.swift in Sources */,

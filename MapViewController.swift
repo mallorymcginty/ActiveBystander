@@ -12,12 +12,12 @@ import Firebase
 
 
 
-class MapViewController: UIViewController
+class MapViewController: UIViewController, CLLocationManagerDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
     
     var alertNodeRef : FIRDatabaseReference!
-    
+    var locationManager : CLLocationManager?
 
 
     
@@ -25,18 +25,13 @@ class MapViewController: UIViewController
     {
         super.viewDidLoad()
 
-        self.mapView.delegate = self
-            
-        func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-            let location = locations.last as! CLLocation
-            //How to zoom in on location?
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-           
-            self.mapView.setRegion(region, animated: true)
-        }
         
-
+        self.mapView.showsUserLocation = true
+        mapView.delegate = self
+        locationManager?.delegate = self
+        mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+        
+        
         
         //Create DB reference
         alertNodeRef = FIRDatabase.database().reference().child("alerts")
@@ -74,9 +69,7 @@ class MapViewController: UIViewController
             })
         }
     
-     /*  let alert = Alert(title: "Person Name", locationName: "Person info", username: "user123", coordinate: CLLocationCoordinate2D(latitude: 43.043914, longitude:-87.917262), isDisabled: false)
-        
-        mapView.addAnnotation(alert)*/
+    
         
         
     
@@ -93,7 +86,7 @@ class MapViewController: UIViewController
     }
 
     
-    var locationManager = CLLocationManager()
+    var locationManager2 = CLLocationManager()
     func checkLocationAuthorizationStatus()
     {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse
@@ -102,7 +95,7 @@ class MapViewController: UIViewController
         }
         else
         {
-            locationManager.requestWhenInUseAuthorization()
+            locationManager2.requestWhenInUseAuthorization()
         }
     }
     

@@ -14,7 +14,8 @@ class PhotoCell: UICollectionViewCell
     
     @IBOutlet weak var imgPhoto: UIImageView!
     
-    //Should this be pulling from Firebase?
+    @IBOutlet weak var lblScore: UILabel!
+
     
     
     
