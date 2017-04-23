@@ -80,6 +80,14 @@ class AddAlertViewController: UIViewController, CLLocationManagerDelegate {
     }
     
  
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+        txtAlertDescription.resignFirstResponder()
+    }
+
+    
+    
 
     
 }

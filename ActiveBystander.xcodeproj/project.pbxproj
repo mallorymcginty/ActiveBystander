@@ -185,8 +185,6 @@
 		3D1FDAE41E56878E00EF4FB6 = {
 			isa = PBXGroup;
 			children = (
-				3DAEEEC91EA99E0E00551B80 /* RestKit.framework */,
-				3DAEEECA1EA99E0E00551B80 /* VisualRecognitionV3.framework */,
 				3DAEEEC41EA9532B00551B80 /* Frameworks */,
 				3D8899B61E63D06F00CEB9E0 /* Controllers */,
 				3D1FDAEF1E56878F00EF4FB6 /* ActiveBystander */,
@@ -236,6 +234,8 @@
 		3DAEEEC41EA9532B00551B80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DAEEEC91EA99E0E00551B80 /* RestKit.framework */,
+				3DAEEECA1EA99E0E00551B80 /* VisualRecognitionV3.framework */,
 				3DAEEEB81EA9531D00551B80 /* Alamofire.framework */,
 				3DAEEEB91EA9531D00551B80 /* AlamofireImage.framework */,
 				3DAEEEBA1EA9531D00551B80 /* AlchemyDataNewsV1.framework */,

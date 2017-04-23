@@ -367,7 +367,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="yes"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <view userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Wa-H0-8Iq">
+                            <view alpha="0.60000002384185791" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Wa-H0-8Iq">
                                 <rect key="frame" x="0.0" y="565" width="375" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -500,7 +500,7 @@
                                     <navigationItem title="Upload a Photo" id="rMH-Fb-JPl">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Z4A-c9-vDB">
                                             <connections>
-                                                <segue destination="NoS-Ll-mYS" kind="showDetail" id="DsC-qv-oTr"/>
+                                                <segue destination="NoS-Ll-mYS" kind="showDetail" id="PHO-ig-NMo"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="ZMx-t4-W6T">
@@ -711,7 +711,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xKX-Z7-vHX" kind="show" id="Fvf-v1-f9n"/>
+                                    <segue destination="xKX-Z7-vHX" kind="showDetail" action="showViewController:sender:" id="Fvf-v1-f9n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngf-C5-nOo">
@@ -930,14 +930,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JI3-wq-2if">
                                 <rect key="frame" x="54" y="246" width="161" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Of-Ie-tE7">
                                 <rect key="frame" x="54" y="187" width="265" height="30"/>
@@ -972,8 +972,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9V-tw-Fif">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="39s-jj-Mbf">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="uMR-AV-2op">
+                                            <connections>
+                                                <segue destination="IkE-Nq-sud" kind="showDetail" id="sap-5G-iHC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1022,14 +1035,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LxR-rq-dpj" kind="show" id="4Rn-X9-CI2"/>
+                                    <segue destination="LxR-rq-dpj" kind="showDetail" action="showViewController:sender:" id="4Rn-X9-CI2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dnp-cz-5Uw">
                                 <rect key="frame" x="190" y="234" width="185" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="3nV-se-UkS" kind="show" animates="NO" id="F0V-0p-gQz"/>
+                                    <segue destination="3nV-se-UkS" kind="showDetail" animates="NO" action="showViewController:sender:" id="F0V-0p-gQz"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdQ-H5-NGJ">
@@ -1087,7 +1100,6 @@
                             </button>
                         </subviews>
                     </view>
-                    <navigationItem key="navigationItem" id="s7c-v4-GQN"/>
                     <connections>
                         <outlet property="btnLogout" destination="Bcw-ja-hCr" id="3jG-kE-qcE"/>
                         <outlet property="lblBuild" destination="pej-CX-4bk" id="0eF-5P-s7X"/>
@@ -1124,7 +1136,7 @@
                                 <rect key="frame" x="0.0" y="228" width="185" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="xKX-Z7-vHX" kind="show" animates="NO" id="qmn-32-e6j"/>
+                                    <segue destination="xKX-Z7-vHX" kind="showDetail" animates="NO" action="showViewController:sender:" id="qmn-32-e6j"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.85000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSn-aL-ec8">
@@ -1138,7 +1150,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="WBA-Cf-nhK" kind="show" id="ejt-Tu-ehE"/>
+                                    <segue destination="WBA-Cf-nhK" kind="showDetail" action="showViewController:sender:" id="ejt-Tu-ehE"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ItZ-Tx-8vf">
@@ -1672,9 +1684,10 @@
         <image name="SignUpBG" width="360" height="642"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fvf-v1-f9n"/>
-        <segue reference="w4l-NK-DK1"/>
-        <segue reference="gtb-bO-quq"/>
+        <segue reference="qmn-32-e6j"/>
+        <segue reference="sap-5G-iHC"/>
+        <segue reference="WUY-d7-RIa"/>
         <segue reference="gma-qC-lNL"/>
+        <segue reference="PHO-ig-NMo"/>
     </inferredMetricsTieBreakers>
 </document>
