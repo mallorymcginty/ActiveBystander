@@ -29,7 +29,7 @@ struct ImageUrlItem {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         imageUrl = snapshotValue["ImageUrl"] as! String // must map to firebase names
-        watsonCollectionImageUrl = ""
+        watsonCollectionImageUrl = "https://gateway-a.watsonplatform.net/visual-recognition/api"
         score = 0
         ref = snapshot.ref
     }

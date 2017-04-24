@@ -17,64 +17,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var mapView: MKMapView!
     
     var alertNodeRef : FIRDatabaseReference!
-    var locationManager : CLLocationManager?
+    var alerts: [Alert] = []
+    var ref = FIRDatabase.database().reference(withPath: "alerts")
 
 
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-
-        
-        self.mapView.showsUserLocation = true
-        mapView.delegate = self
-        locationManager?.delegate = self
-        mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
-        
-        
-        
-        //Create DB reference
-        alertNodeRef = FIRDatabase.database().reference().child("alerts")
-        
-        
-       // let pinAlertId = "alrt-1"
-        var pinAlert: Alert?
-        alertNodeRef.child("alerts").observe(.value, with: { (snapshot: FIRDataSnapshot) in
-            
-            if let dictionary = snapshot.value as? [String: Any]
-            {
-                if pinAlert != nil
-                {
-                    self.mapView.removeAnnotation(pinAlert!)
-                }
-                
-                let pinLat = dictionary["latitude"] as! Double
-                let pinLong = dictionary["longitude"] as! Double
-                let alertDisabled = dictionary["isDisabled"] as! Bool
-                
-                let alert = Alert(title: (dictionary["first"] as? String)!, alertDescription: (dictionary["alertDescription"] as? String)!,
-                                  coordinate: CLLocationCoordinate2D(latitude: pinLat, longitude: pinLong),
-                                  isDisabled: alertDisabled
-                    )
-                
-            
-                
-        pinAlert = alert
-            
-                if !alert.isDisabled
-                {
-                    self.mapView.addAnnotation(alert)
-                }
-            }
-            })
-        }
-    
     
         
-        
-    
-    
-
     
     let regionRadius: CLLocationDistance = 500
     func centerMapOnLocation(location: CLLocation)
@@ -86,7 +35,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
     }
 
     
-    var locationManager2 = CLLocationManager()
+    var locationManager = CLLocationManager()
     func checkLocationAuthorizationStatus()
     {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse
@@ -95,17 +44,109 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         }
         else
         {
-            locationManager2.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
     }
     
-    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        self.mapView.showsUserLocation = true
+        mapView.delegate = self
+        locationManager.delegate = self
+        mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+        
+        
+    }
+
     
     
     
     override func viewDidAppear(_ animated: Bool)
     {
-        super.viewDidAppear(animated)
-        checkLocationAuthorizationStatus()
+        self.mapView.delegate = self
+        
+        
+        
+        
+        
+        //Create DB reference
+        alertNodeRef = FIRDatabase.database().reference()
+        
+        
+        // let pinAlertId = "alrt-1"
+        var pinAlert: Alert?
+        //alertNodeRef.child("alerts").child.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+        
+        alertNodeRef.child("alerts").queryOrdered(byChild: "isDisabled").queryEqual(toValue: false).observe(.value, with: { snapshot in
+            
+            print(snapshot.value)
+            
+            
+            if let dictionary = snapshot.value as? [String: Any]
+            {
+                
+                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    guard let restDict = rest.value as? [String: AnyObject] else {
+                        continue
+                    }
+                    let someValue = restDict["key"]
+                }
+                
+                for dbItem in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    //let gItem = (snapshot: dbItem )
+                    //print(gItem.value!)
+                    
+                    guard let restDict = dbItem.value as? [String: AnyObject] else {
+                        continue
+                    }
+                    //let someValue = restDict["key"]
+                    
+                    
+                    // let dict = snapshot.childSnapshot(forPath: dbItem.key)
+                    
+                    let pinLat = restDict["latitude"] as? Double
+                    let pinLong = restDict["longitude"] as? Double
+                    let alertDisabled = restDict["isDisabled"] as? Bool
+                    
+                    // var clLoc:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:pinLat!, longitude:pinLong!);
+                    
+                    
+                    
+                    // convert the snapshot JSON value to your Struct type
+                    // let newValue = Alert(alertDescription: , coordinate: clLoc, longitude:pinLong, latitude:pinLat, isDisabled: alertDisabled)
+                    
+                    
+                    if pinAlert != nil
+                    {
+                        self.mapView.removeAnnotation(pinAlert!)
+                    }
+                    
+                    print(dictionary)
+                    
+                    
+                    
+                    let alert = Alert(alertDescription: (restDict["alertDescription"] as? String)!,
+                                      coordinate: CLLocationCoordinate2D(latitude: pinLat!, longitude: pinLong!), longitude: pinLong!, latitude: pinLat!,
+                                      isDisabled: alertDisabled!, title:"UserInfo"
+                    )
+                    
+                    
+                    pinAlert = alert
+                    
+                    if !alert.isDisabled
+                    {
+                        self.mapView.addAnnotation(alert)
+                    }
+                    
+                    
+                    //newItems.append(newValue)
+                }
+                
+            }
+            
+            
+        })
     }
 }

@@ -18,7 +18,57 @@ class AddAlertViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var btnAddAlert: UIButton!
     
     
-    let locationManager   = CLLocationManager()
+    var locationManager: CLLocationManager!
+   
+    var myLongitude: Double!
+    var myLatitude: Double!
+    var location: CLLocation!
+    {
+        didSet
+        {
+            myLatitude =  location.coordinate.latitude
+            myLongitude = location.coordinate.longitude
+        }
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        checkCoreLocationPermission()
+    }
+    
+    func checkCoreLocationPermission()
+    {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+        {
+            locationManager.startUpdatingLocation()
+        
+        }
+        if CLLocationManager.authorizationStatus() == .notDetermined
+        {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        if CLLocationManager.authorizationStatus() == .restricted
+        {
+            print("Unauthorized")
+            let ac = UIAlertController(title: "Unable to Add Alert!", message:"Please allow Active Bystander access to your location.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+        
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        location = locations.last
+        locationManager.stopUpdatingLocation()
+    }
     
     
     
@@ -27,46 +77,32 @@ class AddAlertViewController: UIViewController, CLLocationManagerDelegate {
     {
         super.viewDidLoad()
         
-        locationManager.delegate = self
-        
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
-        locationManager.startUpdatingLocation()
-        
+     
     }
     
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if let location = locations.first {
-            
-            print("target position : =  \(location.coordinate)")
-            print(locationManager.location!.coordinate.latitude)
-            locationManager.stopUpdatingLocation()
-            FIRDatabase.database().reference().child("Location").child(FIRAuth.auth()!.currentUser!.uid).setValue(["Latitude": locationManager.location!.coordinate.latitude, "Longitude": locationManager.location!.coordinate.longitude])
-        }
-        
-    }
   
     
 
     @IBAction func btnAddAlert(_ sender: Any)
     {
-        super.viewDidLoad()
+        locationManager.startUpdatingLocation()
         
         var ref: FIRDatabaseReference!
-        let user = FIRAuth.auth()?.currentUser
-        let uid = user?.uid
+        
+       
         
         ref = FIRDatabase.database().reference()
         
         //Might cause an issue
         let alert : [String : Any] =
             ["alertDescription": txtAlertDescription.text!,
-             "Location": locationManager,
-             "userID": uid!]
+             "latitude": self.myLatitude!,
+             "longitude": self.myLongitude!,
+             "isDisabled": false,
+             "userID": FIRAuth.auth()!.currentUser!.uid as Any]
+        
+        print(alert)
         
         //Adds FB JSON node for incidentLog
         ref.child("alerts").childByAutoId().setValue(alert)
@@ -80,6 +116,13 @@ class AddAlertViewController: UIViewController, CLLocationManagerDelegate {
     }
     
  
+    
+    
+    
+    
+    
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         self.view.endEditing(true)

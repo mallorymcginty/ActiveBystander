@@ -64,6 +64,17 @@ class IncidentTableViewController: UITableViewController
     }
     
 
+    @IBAction func btnSort(_ sender: UIBarButtonItem)
+    {
+        let ac = UIAlertController(title: "Sort & Filter", message:"Coming soon!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+    
+    
+    
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return incidents.count

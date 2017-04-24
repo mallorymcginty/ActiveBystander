@@ -110,22 +110,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 ref.child("Photos").childByAutoId().setValue(imageNode) /**/
         
         }
-      /*
-       //SAVE DESC TO FIREBASE
-        var ref: FIRDatabaseReference!
-        
-        ref = FIRDatabase.database().reference()
-        
-        let description : [String : Any] =
-            ["photo description": txtPhotoDesc.text!]
-        
-        //Adds FB JSON node for incidentLog
-        ref.child("Photos").setValue(description)
-        
-        txtPhotoDesc.text = nil
-       */
-      
-        
+              
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "search")
         self.present(vc!, animated: true, completion: nil)
  
