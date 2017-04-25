@@ -95,8 +95,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                 }
                 
                 for dbItem in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                    //let gItem = (snapshot: dbItem )
-                    //print(gItem.value!)
+                    
+                    print(dbItem.value!)
                     
                     guard let restDict = dbItem.value as? [String: AnyObject] else {
                         continue
@@ -110,12 +110,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                     let pinLong = restDict["longitude"] as? Double
                     let alertDisabled = restDict["isDisabled"] as? Bool
                     
-                    // var clLoc:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:pinLat!, longitude:pinLong!);
+                   //  var clLoc:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:pinLat!, longitude:pinLong!);
                     
                     
                     
                     // convert the snapshot JSON value to your Struct type
-                    // let newValue = Alert(alertDescription: , coordinate: clLoc, longitude:pinLong, latitude:pinLat, isDisabled: alertDisabled)
+                   // let newValue = Alert(alertDescription: (restDict["alertDescription"] as? String)! , coordinate: clLoc, longitude:pinLong!, latitude:pinLat!, isDisabled: alertDisabled!, title: "User")
                     
                     
                     if pinAlert != nil
@@ -129,7 +129,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                     
                     let alert = Alert(alertDescription: (restDict["alertDescription"] as? String)!,
                                       coordinate: CLLocationCoordinate2D(latitude: pinLat!, longitude: pinLong!), longitude: pinLong!, latitude: pinLat!,
-                                      isDisabled: alertDisabled!, title:"UserInfo"
+                                      isDisabled: alertDisabled!, title:"User Name"
                     )
                     
                     

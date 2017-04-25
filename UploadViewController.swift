@@ -106,6 +106,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 let imageNode : [String : String] = ["ImageUrl": imageUrl!,
                                                      "Description": self.txtPhotoDesc.text!]
                 
+                print(imageNode)
                 // add to the Firebase JSON node for MyUsers
                 ref.child("Photos").childByAutoId().setValue(imageNode) /**/
         

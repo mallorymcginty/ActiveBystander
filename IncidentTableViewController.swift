@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class IncidentTableViewController: UITableViewController
+class IncidentTableViewController: UITableViewController, UINavigationBarDelegate
 
 {
     

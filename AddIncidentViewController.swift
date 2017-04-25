@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddIncidentViewController: UIViewController
+class AddIncidentViewController: UIViewController, UITextViewDelegate
 {
     @IBOutlet weak var txtCategory: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -17,6 +17,13 @@ class AddIncidentViewController: UIViewController
     @IBOutlet weak var txtState: UITextField!
     @IBOutlet weak var txtDescription: UITextView!
 
+    
+    
+    
+    
+    
+    
+    
     
     @IBOutlet weak var btnPostIncident: UIButton!
     
@@ -48,7 +55,7 @@ class AddIncidentViewController: UIViewController
     txtState.text = nil
     txtDescription.text = nil
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "incidents")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav1")
         self.present(vc!, animated: true, completion: nil)
     
     }
@@ -56,16 +63,31 @@ class AddIncidentViewController: UIViewController
         
         
         
-        
+    
         
         
        override func viewDidLoad()
        {
             super.viewDidLoad()
-            
-            // Do any additional setup after loading the view.
-        }
+       
+       self.txtDescription.delegate = self
+        txtDescription.text = "Description..."
+        txtDescription.textColor = UIColor.lightGray
         
+        }
+    
+    
+    
+        
+    func textViewDidBeginEditing(textView: UITextField)
+    {
+      if (textView.text == "Description...")
+      {
+            txtDescription.text = ""
+            txtDescription.textColor = UIColor.black
+        }
+        txtDescription.becomeFirstResponder()
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -78,8 +100,6 @@ class AddIncidentViewController: UIViewController
         txtDescription.resignFirstResponder()
     }
 
-    
-    
     
     
 }
