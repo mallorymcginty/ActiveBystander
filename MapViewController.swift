@@ -88,19 +88,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
             {
                 
                 for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                    guard let restDict = rest.value as? [String: AnyObject] else {
+                    guard (rest.value as? [String: AnyObject]) != nil else {
+                        
+                        print("CHILDREN", snapshot.children)
+                        print("REST:  ", rest)
+                        
+                        
+                        
+                        
                         continue
                         
-                        print (snapshot.children)
+                        
+                        
+                        
                     }
-                    let someValue = restDict["key"]
+                    
                 }
                 
                 for dbItem in snapshot.children.allObjects as! [FIRDataSnapshot] {
                     
-                    print(dbItem.value!)
+                    print("DBITEM:    ", dbItem.value!)
                     
-                    guard let restDict = dbItem.value as? [String: AnyObject] else {
+                    guard let restDict = dbItem.value as? [String: AnyObject] else
+                    {
                         continue
                     }
                     //let someValue = restDict["key"]
@@ -120,10 +130,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                    // let newValue = Alert(alertDescription: (restDict["alertDescription"] as? String)! , coordinate: clLoc, longitude:pinLong!, latitude:pinLat!, isDisabled: alertDisabled!, title: "User")
                     
                     
-                    if pinAlert != nil
-                    {
-                        self.mapView.removeAnnotation(pinAlert!)
-                    }
+                    //if pinAlert != nil
+                    //{
+                     //   self.mapView.removeAnnotation(pinAlert!)
+                    //}
                     
                     print(dictionary)
                     
@@ -131,16 +141,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                     
                     let alert = Alert(alertDescription: (restDict["alertDescription"] as? String)!,
                                       coordinate: CLLocationCoordinate2D(latitude: pinLat!, longitude: pinLong!), longitude: pinLong!, latitude: pinLat!,
-                                      isDisabled: alertDisabled!, title:"User Name"
-                    )
+                                      isDisabled: alertDisabled!, title:"User Name")
                     
                     
                     pinAlert = alert
                     
-                    if !alert.isDisabled
-                    {
-                        self.mapView.addAnnotation(alert)
-                    }
+                   // if !alert.isDisabled
+                    //{
+                        self.mapView.addAnnotation(alert as MKAnnotation)
+                    //}
                     
                     
                    // newItems.append(newValue)

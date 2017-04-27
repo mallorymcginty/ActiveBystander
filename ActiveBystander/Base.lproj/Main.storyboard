@@ -511,7 +511,7 @@
                                     <action selector="btnUploadImg:" destination="HuL-K0-ViP" eventType="touchUpInside" id="5aA-41-CtM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Koq-j2-6PK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo place holder" translatesAutoresizingMaskIntoConstraints="NO" id="Koq-j2-6PK">
                                 <rect key="frame" x="79" y="55" width="218" height="177"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Koq-j2-6PK" secondAttribute="height" multiplier="218:177" id="AGB-ND-Bgo"/>
@@ -637,7 +637,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-Cr-cKA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Photo place holder" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-Cr-cKA">
                                                     <rect key="frame" x="-2" y="-2" width="114" height="105"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1977,6 +1977,7 @@
         <image name="Add Incident" width="373" height="665"/>
         <image name="Filter and Sort-30" width="30" height="30"/>
         <image name="Menu2" width="370" height="660"/>
+        <image name="Photo place holder" width="927" height="720"/>
         <image name="Prof for app2" width="195" height="197"/>
         <image name="Screen Shot 2017-02-22 at 10.19.56 PM" width="359" height="641"/>
         <image name="Screen Shot 2017-02-22 at 9.42.40 PM" width="361" height="642"/>
@@ -1987,12 +1988,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nA5-ZC-QvG"/>
-        <segue reference="nhY-VO-xdj"/>
+        <segue reference="I56-N2-tEb"/>
+        <segue reference="u0e-TB-A20"/>
+        <segue reference="w4l-NK-DK1"/>
+        <segue reference="PHO-ig-NMo"/>
         <segue reference="c48-HR-vcU"/>
         <segue reference="jcv-wz-4VG"/>
-        <segue reference="u0e-TB-A20"/>
-        <segue reference="gtb-bO-quq"/>
-        <segue reference="I56-N2-tEb"/>
         <segue reference="wJz-h7-DSx"/>
     </inferredMetricsTieBreakers>
 </document>
