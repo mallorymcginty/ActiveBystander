@@ -9,12 +9,14 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 
 class UpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
     @IBOutlet weak var profileImageView: UIImageView!
+    
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var txtDOB: UITextField!
     @IBOutlet weak var txtGender: UITextField!
@@ -28,13 +30,34 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     
     @IBOutlet weak var btnSaveProf: UIButton!
     
-    
+    var storageRef: FIRStorageReference!
     
     
     let userNodeRef = FIRDatabase.database().reference().child("users")
     
     let storage = FIRStorage.storage()
     //let storageRef = FIRStorageReference!
+    
+    func configureStorage()
+    {
+    let storageUrl = FIRApp.defaultApp()?.options.storageBucket
+    storageRef = FIRStorage.storage().reference(forURL: "gs://" + storageUrl!)
+    }
+    
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        configureStorage()
+        
+        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.25
+        profileImageView.layer.masksToBounds = true
+        self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
+        
+    }
+
+    
+
     
 
     @IBAction func btnSaveProf(_ sender: Any)
@@ -47,14 +70,56 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
             self.userNodeRef.child((user?.uid)!).updateChildValues(userValues, withCompletionBlock: {(userDBError, userDBRef) in
             })
             
+        }
+        
+            // get the image in the imageView and save it to the Photo Album
+            let imageData = UIImageJPEGRepresentation(profileImageView.image!, 0.8) // compression quality
+            let compressedJPEGImage = UIImage(data: imageData!)
+            UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
+            
+            // save to Firebase Storage - to current user?
+            //let guid =  "test_id" // substitute with the current user's ID
+            
+            let guid = UUID().uuidString // STEP 1: Generate new UUID
             
             
+            let imagePath = "\(guid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            self.storageRef.child(imagePath)
+                .put(imageData!, metadata: metadata) {  (metadata, error) in
+                    if let error = error
+                    {
+                        print("Error uploading: \(error)")
+                        return
+                    }
+                    
+                    // STEP 2b: Get the image URL
+                    let imageUrl = metadata?.downloadURL()?.absoluteString
+                    
+                    // STEP 3: Add code to save the imageURL to the Realtime database
+                    var ref: FIRDatabaseReference!
+                    ref = FIRDatabase.database().reference()
+                    
+                    let imageNode : [String : String] = ["ImageUrl": imageUrl!]
+                    
+                    // add to the Firebase JSON node for MyUsers
+                    ref.child("users").childByAutoId().setValue(imageNode)
+            
+        }
+        
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "userInfo")
         self.present(vc!, animated: true, completion: nil)
-        }
+        
     }
+
     
+    
+    
+
+
     @IBAction func btnUploadProf(_ sender: UIButton)
     {
         //saving to FB and show in the profileImageView
@@ -68,100 +133,41 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
             self.present(imgPicker, animated: true, completion: nil)
         }
         
+    }
+
+        
        
         //Error with datatype - think I fixed it unable to test
-        func  imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
+    func  imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) 
         {
-        
-            let user = FIRAuth.auth()?.currentUser
-            
-            profileImageView.image = image
-            self.dismiss(animated: true, completion: nil)
-            var data = NSData()
-            data = UIImageJPEGRepresentation(profileImageView.image!, 0.8)! as NSData
-            let filePath = FIRAuth.auth()!.currentUser!.uid
-            let metaData = FIRStorageMetadata()
-            metaData.contentType = "image/jpeg"
-            self.storage.reference().child(filePath).put(data as Data, metadata: metaData) {(metaData,error) in
-                if let error = error
-                {
-                    print(error.localizedDescription)
-                    return
-                }
-                else
-                {
-                    let downloadURL = metaData!.downloadURL()!.absoluteString
-                    
-                    self.userNodeRef.child((user?.uid)!).updateChildValues(["userPhoto": downloadURL])
-                }
+            if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            {
+                profileImageView.image = selectedImage
+                
+            } else
+            {
+                print("Something went wrong")
             }
+            
+            dismiss(animated:true, completion: nil)
     
-        }
-        
-        //OR?
-        
-        /* // get the image in the imageView and save it to the Photo Album
-            let imageData = UIImageJPEGRepresentation(imgPhoto.image!, 0.8) // compression quality
-            let compressedJPEGImage = UIImage(data: imageData!)
-            UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
- 
-            // save to Firebase Storage - to current user?
-            //let guid =  "test_id" // substitute with the current user's ID
- 
-         let guid = UUID().uuidString // STEP 1: Generate new UUID
- 
- 
-         let imagePath = "\(guid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
-         let metadata = FIRStorageMetadata()
-         metadata.contentType = "image/jpeg"
- 
-            self.storageRef.child(imagePath)
-            .put(imageData!, metadata: metadata) {  (metadata, error) in
-            if let error = error 
-         {
-            print("Error uploading: \(error)")
-            return
-         }
- 
-            // STEP 2b: Get the image URL
-            let imageUrl = metadata?.downloadURL()?.absoluteString
- 
-            // STEP 3: Add code to save the imageURL to the Realtime database
-            var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference()
- 
-            let imageNode : [String : String] = ["ImageUrl": imageUrl!]
- 
-            // add to the Firebase JSON node for MyUsers
-            ref.child("users").childByAutoId().setValue(imageNode) /**/
- 
-         }   */
-
- 
- 
+       
  
     }
  
- 
- 
- 
- 
- 
- 
- 
-    override func viewDidLoad()
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
-        super.viewDidLoad()
-
-        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.0
-        profileImageView.layer.masksToBounds = true
-        self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
-
-        
-        
-        
+        picker.dismiss(animated: true, completion: { _ in })
     }
-
+ 
+ 
+ 
+ 
+ 
+ 
+    
     @IBAction func btnLogout(_ sender: AnyObject)
     {
         try! FIRAuth.auth()?.signOut()

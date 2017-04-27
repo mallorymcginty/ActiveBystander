@@ -90,6 +90,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                 for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                     guard let restDict = rest.value as? [String: AnyObject] else {
                         continue
+                        
+                        print (snapshot.children)
                     }
                     let someValue = restDict["key"]
                 }
@@ -141,7 +143,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                     }
                     
                     
-                    //newItems.append(newValue)
+                   // newItems.append(newValue)
                 }
                 
             }

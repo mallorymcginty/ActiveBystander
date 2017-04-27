@@ -29,8 +29,8 @@ class ProfileViewController: UIViewController {
     
     var storageRef: FIRStorageReference!
     
+  let storage = FIRStorage.storage()
   
-    
     
     
     
@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
        // profileImageView.image = FIRStorage.reference(<#T##FIRStorage#>)
-        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.0
+        profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.25
         profileImageView.layer.masksToBounds = true
         self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
         
@@ -61,15 +61,33 @@ class ProfileViewController: UIViewController {
                 self.lblHeight.text = dictionary["height"] as? String
                 //Will this display the image
                 //Or do I need to convert from url to image
-                self.profileImageView.image = dictionary["userPhoto"] as? UIImage
+                
+                
+                //self.profileImageView.image = dictionary["userPhoto"] as? UIImage
+               
+                
+                
             }
-        
-        
+    
+            
+            
+            
+            
         })
 
+    
         
         
-        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
 
     
     @IBAction func btnLogout(_ sender: AnyObject)

@@ -34,19 +34,31 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureStorage()
     }
     
+    
+    
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
+        print("IMAGE INFO:",  info)
+        
+        
         
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
+            print("IMAGE SIZE = ", selectedImage.size)
+            
             imgPhoto.image = selectedImage
-        } else
+        }
+            
+        else
         {
             print("Something went wrong")
         }
         
-        dismiss(animated:true, completion: nil)
+        picker.dismiss(animated:true, completion: nil)
     }
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {

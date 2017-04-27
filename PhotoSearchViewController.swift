@@ -16,7 +16,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     let apiKey = "ce5c9a38c2dd1868be46cd7bff62d587e38aaef3"
     let version = "2017-21-2017" // plug-in today’s date here
     let watsonCollectionName = "PhotoCollection" // watson collection id
-    var watsonCollectionId = "PhotoCollection" // watson collection id
+    var watsonCollectionId = "" // watson collection id
     
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -35,7 +35,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBAction func btnSearch(_ sender: UIButton) {
         
-                self.btnSearch.isHidden = true // hide the upload button
+        self.btnSearch.isHidden = true // hide the upload button
         
         // MARK: Show an ActionSheet for picking the Photo or using the Camera
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
@@ -101,13 +101,14 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     var storageRef: FIRStorageReference!
     
     // 3: create a function for saving content to Firebase storage
-    func configureStorage() {
+    func configureStorage()
+    {
         let storageUrl = FIRApp.defaultApp()?.options.storageBucket
         storageRef = FIRStorage.storage().reference(forURL: "gs://" + storageUrl!)
     }
     
-    //Why
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any?]) {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imgPhoto.image = selectedImage
@@ -129,14 +130,14 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
         
         // if it's the first time, we won't show the no image found error
         self.firstTimeSearch = true
-        
+       // lblImageCaption.text = "Searching ..."
         
         performSearch()
     }
     
+    
     func performSearch()
     {
-        // STEP 2: MARK - save the test image
         let imageData = UIImageJPEGRepresentation(imgPhoto.image!, 0.8) // compression quality
         let compressedJPEGImage = UIImage(data: imageData!)
         UIImageWriteToSavedPhotosAlbum(compressedJPEGImage!, nil, nil, nil)
@@ -191,6 +192,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
                     })
         }
     }
+    
     
     
     func createCollection()
@@ -288,6 +290,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
+    
     func removeCollection()
     {
         // create a collection and
@@ -338,13 +341,13 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
             {
                 print(classifiedImage.classifiers)
                 
-                if let results = classifiedImage.classifiers.first?.classes.first?.classification {
+                if (classifiedImage.classifiers.first?.classes.first?.classification) != nil {
                     
                     DispatchQueue.main.async {
                         // success: show the results in the title bar
                         
                     }
-                }
+               }
             }
             else
             {
@@ -440,6 +443,5 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
         
         return cell
     }
-
     
 }
