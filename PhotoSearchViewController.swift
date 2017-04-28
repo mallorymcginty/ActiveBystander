@@ -14,7 +14,7 @@ import VisualRecognitionV3
 class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let apiKey = "ce5c9a38c2dd1868be46cd7bff62d587e38aaef3"
-    let version = "2017-21-2017" // plug-in today’s date here
+    let version = "2017-27-2017" // plug-in today’s date here
     let watsonCollectionName = "PhotoCollection" // watson collection id
     var watsonCollectionId = "" // watson collection id
     
@@ -29,8 +29,8 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     var similarImageUrls: [ImageUrlItem] = []
     var newPhotoRecognitionURL: URL!
     var visualRecognition: VisualRecognition!
-    let similarityScoreThrehold = 0.6 // change to see less/more accurate results
-    let maxFirebaseImages: UInt = 15 // set maxmimum number of images to be used from firebase here
+    let similarityScoreThrehold = 0.4 // change to see less/more accurate results
+    let maxFirebaseImages: UInt = 5 // set maxmimum number of images to be used from firebase here
     var firstTimeSearch: Bool = true
     
     @IBAction func btnSearch(_ sender: UIButton) {
@@ -254,7 +254,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
                                                                                                                 if resultsImageItem.watsonCollectionImageUrl == similarImageItem.imageFile
                                                                                                                 {
                                                                                                                     // convert the snapshot JSON value to your Struct type
-                                                                                                                    let newValue = ImageUrlItem(imageUrl: resultsImageItem.imageUrl, key: String(counter), watsonCollectionImageUrl: similarImageItem.imageFile, score: similarImageItem.score!)
+                                                                                                                    let newValue = ImageUrlItem(imageUrl: resultsImageItem.imageUrl, key: String(counter), watsonCollectionImageUrl: similarImageItem.imageFile, score: similarImageItem.score!, description: resultsImageItem.description)
                                                                                                                     
                                                                                                                     print(newValue.imageUrl)
                                                                                                                     self.similarImageUrls.append(newValue)
@@ -310,7 +310,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
             {
                 if String(describing: imageURL) == existingItem.imageUrl
                 {
-                    let newValue = ImageUrlItem(imageUrl: existingItem.imageUrl, key: String(colImages.collectionImages.count), watsonCollectionImageUrl: colImages.collectionImages[0].imageFile)
+                    let newValue = ImageUrlItem(imageUrl: existingItem.imageUrl, key: String(colImages.collectionImages.count), watsonCollectionImageUrl: colImages.collectionImages[0].imageFile, description: existingItem.description)
                     self.resultsImageUrls.append(newValue)
                 }
             }

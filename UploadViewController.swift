@@ -44,7 +44,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage!
         {
             print("IMAGE SIZE = ", selectedImage.size)
             
@@ -149,20 +149,20 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
 
 //Should this be its own thing similar to Alert and Incident?
 
-
+/*
 class Photo: NSObject
 {
     let photoDescription: String?
-   // let imgPhoto: UIImage
+   let imgPhoto: UIImage
     
     init(photoDescription: String)
     {
         self.photoDescription = photoDescription
-       // self.imgPhoto = imgPhoto
+       self.imgPhoto = imgPhoto
         
         super.init()
     }
+ 
     
     
-    
-}
+} */
