@@ -100,7 +100,7 @@ class AddAlertViewController: UIViewController, CLLocationManagerDelegate {
              "latitude": self.myLatitude!,
              "longitude": self.myLongitude!,
              "isDisabled": false,
-             "title": "User",
+             "title": "Mallory",
              "userID": FIRAuth.auth()!.currentUser!.uid as Any]
         
         print(alert)

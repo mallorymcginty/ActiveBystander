@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 
-class UpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class UpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate
 {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -50,6 +50,28 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         super.viewDidLoad()
         configureStorage()
         
+        txtDOB.delegate = self
+        txtDOB.tag = 0
+        
+        txtGender.delegate = self
+        txtGender.tag = 1
+        
+        txtRace.delegate = self
+        txtRace.tag = 2
+        
+        txtHeight.delegate = self
+        txtHeight.tag = 3
+        
+        txtBuild.delegate = self
+        txtBuild.tag = 4
+        
+        txtHair.delegate = self
+        txtHair.tag = 5
+        
+        txtEye.delegate = self
+        txtEye.tag = 6
+        
+        
         profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2.25
         profileImageView.layer.masksToBounds = true
         self.profileImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
@@ -58,6 +80,25 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
 
     
 
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
+    
+    
+    
+    
+    
+    
     
 
     @IBAction func btnSaveProf(_ sender: Any)
@@ -163,7 +204,19 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     }
  
  
- 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+        txtDOB.resignFirstResponder()
+        txtGender.resignFirstResponder()
+        txtRace.resignFirstResponder()
+        txtHeight.resignFirstResponder()
+        txtBuild.resignFirstResponder()
+        txtHair.resignFirstResponder()
+        txtEye.resignFirstResponder()
+    }
+    
+
  
  
  

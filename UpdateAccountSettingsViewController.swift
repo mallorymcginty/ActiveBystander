@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class UpdateAccountSettingsViewController: UIViewController {
+class UpdateAccountSettingsViewController: UIViewController, UITextFieldDelegate {
 
     //DONT LET EDIT FIRST OR LAST
     //SPECIAL CASE FOR EMAIL AND PW
@@ -53,13 +53,24 @@ class UpdateAccountSettingsViewController: UIViewController {
         
                 
         }
-        }
-    
-    
-    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        txtFirst.delegate = self
+        txtFirst.tag = 0
+        
+        txtLast.delegate = self
+        txtLast.tag = 1
+        
+        txtPhone.delegate = self
+        txtPhone.tag = 2
+        
+        txtCampusSafety.delegate = self
+        txtCampusSafety.tag = 3
+        
         
         
         // profileImageView.image = FIRStorage.reference(<#T##FIRStorage#>)
@@ -79,9 +90,40 @@ class UpdateAccountSettingsViewController: UIViewController {
             
         })
 
-    
         
     }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+        txtFirst.resignFirstResponder()
+        txtLast.resignFirstResponder()
+        txtPhone.resignFirstResponder()
+        txtCampusSafety.resignFirstResponder()
+        
+    }
+    
+
+    
+    
+    
+    
 
     @IBAction func btnLogout(_ sender: UIButton)
     {

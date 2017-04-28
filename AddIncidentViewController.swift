@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddIncidentViewController: UIViewController, UITextViewDelegate
+class AddIncidentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate
 {
     @IBOutlet weak var txtCategory: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -69,12 +69,43 @@ class AddIncidentViewController: UIViewController, UITextViewDelegate
        override func viewDidLoad()
        {
             super.viewDidLoad()
+        
+        txtCategory.delegate = self
+        txtCategory.tag = 0
+        
+        txtAddress.delegate = self
+        txtAddress.tag = 1
+        
+        txtCity.delegate = self
+        txtCity.tag = 2
+        
+        txtState.delegate = self
+        txtState.tag = 3
+        
+        txtDescription.delegate = self
+        txtDescription.tag = 4
+        
        
        self.txtDescription.delegate = self
         txtDescription.text = "Description..."
         txtDescription.textColor = UIColor.lightGray
         
         }
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
     
     
     

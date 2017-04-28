@@ -45,7 +45,7 @@ extension MapViewController: MKMapViewDelegate
         let title = alert.title
         let alertDescription = alert.subtitle
         
-        let ac = UIAlertController(title: "User", message: alertDescription, preferredStyle: .alert)
+        let ac = UIAlertController(title: "Mallory", message: alertDescription, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
        /* ac.addAction(UIAlertAction(title: "Remove", style: .default)
         {

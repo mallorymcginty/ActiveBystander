@@ -15,12 +15,21 @@ import Firebase
 class MapViewController: UIViewController, CLLocationManagerDelegate
 {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var lblOnlineCount: UILabel!
+    
+    
+    
+    
     
     var alertNodeRef : FIRDatabaseReference!
     var alerts: [Alert] = []
     var ref = FIRDatabase.database().reference(withPath: "alerts")
-
-
+    
+    
+    let userRef = FIRDatabase.database().reference(withPath: "online")
+    let listToUsers = "ListToUsers"
+    
+    
     
     
         
@@ -57,10 +66,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
         locationManager.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
         
-        
     }
-
-    
     
     
     override func viewDidAppear(_ animated: Bool)
@@ -122,18 +128,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                     let pinLong = restDict["longitude"] as? Double
                     let alertDisabled = restDict["isDisabled"] as? Bool
                     
-                   //  var clLoc:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:pinLat!, longitude:pinLong!);
+                  
                     
                     
                     
-                    // convert the snapshot JSON value to your Struct type
-                   // let newValue = Alert(alertDescription: (restDict["alertDescription"] as? String)! , coordinate: clLoc, longitude:pinLong!, latitude:pinLat!, isDisabled: alertDisabled!, title: "User")
-                    
-                    
-                    //if pinAlert != nil
-                    //{
-                     //   self.mapView.removeAnnotation(pinAlert!)
-                    //}
                     
                     print(dictionary)
                     
@@ -141,7 +139,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate
                     
                     let alert = Alert(alertDescription: (restDict["alertDescription"] as? String)!,
                                       coordinate: CLLocationCoordinate2D(latitude: pinLat!, longitude: pinLong!), longitude: pinLong!, latitude: pinLat!,
-                                      isDisabled: alertDisabled!, title:"User Name")
+                                      isDisabled: alertDisabled!, title: (restDict["title"] as? String)!)
                     
                     
                     pinAlert = alert
