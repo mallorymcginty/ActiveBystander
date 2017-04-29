@@ -11,17 +11,24 @@ import Firebase
 import AlamofireImage
 import VisualRecognitionV3
 
-class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+
+class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
 
     let apiKey = "ce5c9a38c2dd1868be46cd7bff62d587e38aaef3"
-    let version = "2017-27-2017" // plug-in today’s date here
+    let version = "2017-04-29" // plug-in today’s date here
     let watsonCollectionName = "PhotoCollection" // watson collection id
     var watsonCollectionId = "" // watson collection id
     
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-     var imgPhoto: UIImageView!
+    var imgPhoto: UIImageView!
+    
    
+    
+   
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var ref: FIRDatabaseReference!
     var existingImageUrls: [ImageUrlItem] = []
@@ -29,12 +36,23 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     var similarImageUrls: [ImageUrlItem] = []
     var newPhotoRecognitionURL: URL!
     var visualRecognition: VisualRecognition!
-    let similarityScoreThrehold = 0.4 // change to see less/more accurate results
-    let maxFirebaseImages: UInt = 5 // set maxmimum number of images to be used from firebase here
+    let similarityScoreThrehold = 0.6 // change to see less/more accurate results
+    let maxFirebaseImages: UInt = 15 // set maxmimum number of images to be used from firebase here
     var firstTimeSearch: Bool = true
+    
+    
+    struct Storyboard
+    {
+        static let photoCell = "PhotoCell"
+    }
+    
+    
+    
     
     @IBAction func btnSearch(_ sender: UIButton) {
         
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.stopAnimating()
         self.btnSearch.isHidden = true // hide the upload button
         
         // MARK: Show an ActionSheet for picking the Photo or using the Camera
@@ -86,14 +104,18 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     func showButton()
     {
         DispatchQueue.main.async {
-                        self.btnSearch.isHidden = false // hide the upload button
+                self.btnSearch.isHidden = false // hide the upload button
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
         }
     }
     
     func hideButton()
     {
         DispatchQueue.main.async {
-                        self.btnSearch.isHidden = true // hide the upload button
+                self.btnSearch.isHidden = true // hide the upload button
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
         }
     }
     
@@ -110,9 +132,14 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            
+             imgPhoto = UIImageView(image: UIImage(named: "ABtile")!)
+            
             imgPhoto.image = selectedImage
-        } else {
+        } else
+        {
             print("Something went wrong")
         }
         
@@ -370,7 +397,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstTimeSearch = true
+        activityIndicator.isHidden = true
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -391,10 +418,10 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let reuseIdentifier = "PhotoCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! PhotoCell
-        cell.backgroundColor = UIColor(red:0.96, green:0.97, blue:0.99, alpha:1.0)
+        cell.backgroundColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha: 1.0)
         
         // Do any custom modifications you your cell, referencing the outlets you defined in the Custom cell file // if we have a label IBOutlet in PhotoCell we can customize it here
-        
+        cell.btnDescDelegate = self as? btnDesc
         // on page load when we have no search results, show nothing
         if similarImageUrls.count > 0 {
             
@@ -408,6 +435,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
                 // get image asynchronously via URL
                 let url = URL(string: image.imageUrl)
                 
+                
                 DispatchQueue.global().async {
                     // make an asynchonorous call to load the image
                     DispatchQueue.main.async {
@@ -416,21 +444,24 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
                 }
                 cell.lblScore.isHidden = false
                 cell.lblScore.text = "Score: \(NSString(format: "%.2f", (image.score * 100)) as String)%"
-            }
+                
+                }
             else
             {
                 // show the placeholder image instead
-                cell.imgPhoto.image = UIImage(named: "profile_photo")
+                cell.imgPhoto.image = UIImage(named: "person")
                 cell.lblScore.isHidden = true
                 cell.lblScore.text = "0.00%"
+                
             }
         }
         else
         {
             // show the placeholder image instead
-            cell.imgPhoto.image = UIImage(named: "profile_photo")
+            cell.imgPhoto.image = UIImage(named: "person")
             cell.lblScore.isHidden = true
             cell.lblScore.text = "0.00%"
+           
             
             // when we get to the last image, and it is not the first time load
             if (indexPath.row == 8 && !firstTimeSearch){

@@ -18,9 +18,13 @@ class IncidentTableViewController: UITableViewController, UINavigationBarDelegat
    var incidents: [Incident] = []
     var ref = FIRDatabase.database().reference(withPath: "Incidents")
     
-    struct Storyboard {
+    
+    
+    struct Storyboard
+    {
         static let incidentCell = "IncidentCell"
     }
+    
     
     
     override func viewDidLoad()
@@ -53,17 +57,22 @@ class IncidentTableViewController: UITableViewController, UINavigationBarDelegat
             
             })
         
+        
+        
+        
+        
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             //self.user = User(authData: user)
         }
         
-        
-        
-        
+    
     }
     
-
+    
+    
+    
+    
     @IBAction func btnSort(_ sender: UIBarButtonItem)
     {
         let ac = UIAlertController(title: "Sort & Filter", message:"Coming soon!", preferredStyle: .alert)

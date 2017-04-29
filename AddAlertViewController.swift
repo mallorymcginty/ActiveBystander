@@ -94,7 +94,7 @@ class AddAlertViewController: UIViewController, CLLocationManagerDelegate {
         
         ref = FIRDatabase.database().reference()
         
-        //Might cause an issue
+       
         let alert : [String : Any] =
             ["alertDescription": txtAlertDescription.text!,
              "latitude": self.myLatitude!,

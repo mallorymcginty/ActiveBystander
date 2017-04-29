@@ -519,8 +519,9 @@
                                     <action selector="btnUploadImg:" destination="HuL-K0-ViP" eventType="touchUpInside" id="5aA-41-CtM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo place holder" translatesAutoresizingMaskIntoConstraints="NO" id="Koq-j2-6PK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Koq-j2-6PK">
                                 <rect key="frame" x="79" y="55" width="218" height="177"/>
+                                <color key="tintColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Koq-j2-6PK" secondAttribute="height" multiplier="218:177" id="AGB-ND-Bgo"/>
                                 </constraints>
@@ -645,7 +646,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Photo place holder" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-Cr-cKA">
+                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-Cr-cKA">
                                                     <rect key="frame" x="-2" y="-2" width="114" height="105"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -656,10 +657,25 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N68-ej-yQ0">
+                                                    <rect key="frame" x="87" y="1" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="N68-ej-yQ0" secondAttribute="height" multiplier="1:1" id="qqc-50-daN"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnDesc:" destination="g8b-n8-yrS" eventType="touchUpInside" id="lDJ-QH-tVK"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="g1V-bS-gtW" firstAttribute="top" secondItem="g8b-n8-yrS" secondAttribute="top" constant="74" id="8pF-u9-UQj"/>
+                                            <constraint firstItem="N68-ej-yQ0" firstAttribute="top" secondItem="g8b-n8-yrS" secondAttribute="top" constant="1" id="CH7-gL-fPq"/>
+                                            <constraint firstAttribute="trailing" secondItem="N68-ej-yQ0" secondAttribute="trailing" constant="1" id="GBD-1Q-bec"/>
                                             <constraint firstItem="g1V-bS-gtW" firstAttribute="leading" secondItem="g8b-n8-yrS" secondAttribute="leading" id="dW0-SF-gfi"/>
                                             <constraint firstAttribute="trailing" secondItem="g1V-bS-gtW" secondAttribute="trailing" id="fXm-c3-oAm"/>
                                             <constraint firstAttribute="bottom" secondItem="g1V-bS-gtW" secondAttribute="bottom" constant="5" id="nqd-bf-qzO"/>
@@ -684,18 +700,29 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-dc-bbo">
+                                <rect key="frame" x="193" y="464" width="20" height="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JwW-dc-bbo" secondAttribute="height" multiplier="1:1" id="1kJ-j9-Eht"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W3e-1r-So9" firstAttribute="leading" secondItem="fYy-jV-f7H" secondAttribute="leading" id="5Y3-Sv-Ptk"/>
                             <constraint firstItem="W3e-1r-So9" firstAttribute="top" secondItem="fYy-jV-f7H" secondAttribute="top" id="6pg-Qj-2mm"/>
+                            <constraint firstItem="JwW-dc-bbo" firstAttribute="top" secondItem="hsX-0x-qsh" secondAttribute="bottom" constant="58" id="Dua-aC-npf"/>
                             <constraint firstAttribute="trailing" secondItem="hsX-0x-qsh" secondAttribute="trailing" constant="8" id="FIz-k8-ctu"/>
                             <constraint firstAttribute="trailing" secondItem="W3e-1r-So9" secondAttribute="trailing" id="Nmy-a2-XcZ"/>
                             <constraint firstItem="hsX-0x-qsh" firstAttribute="leading" secondItem="fYy-jV-f7H" secondAttribute="leading" constant="8" id="e3H-HN-4VA"/>
+                            <constraint firstItem="JwW-dc-bbo" firstAttribute="leading" secondItem="fYy-jV-f7H" secondAttribute="leading" constant="193" id="ez8-N5-SqX"/>
                             <constraint firstItem="hsX-0x-qsh" firstAttribute="top" secondItem="Oxj-ki-bDQ" secondAttribute="bottom" constant="61" id="fCW-yM-gt8"/>
+                            <constraint firstAttribute="trailing" secondItem="JwW-dc-bbo" secondAttribute="trailing" constant="162" id="o32-nw-HfI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="JwW-dc-bbo" id="odP-Aq-zn7"/>
                         <outlet property="btnSearch" destination="IWh-IM-yNt" id="kWa-tG-wN0"/>
                         <outlet property="collectionView" destination="hsX-0x-qsh" id="jsL-EN-ccq"/>
                     </connections>
@@ -1625,6 +1652,7 @@
                                         <items>
                                             <navigationItem title="Update Profile" id="3rX-TE-Vau">
                                                 <barButtonItem key="leftBarButtonItem" title="Back" id="TYL-lS-g8U">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <segue destination="xKX-Z7-vHX" kind="showDetail" id="wJz-h7-DSx"/>
                                                     </connections>
@@ -1819,6 +1847,7 @@
                                         <items>
                                             <navigationItem title="Update Profile" id="1Df-Rp-SXK">
                                                 <barButtonItem key="leftBarButtonItem" title="Back" id="a7C-cn-cIW">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <segue destination="3nV-se-UkS" kind="showDetail" id="nA5-ZC-QvG"/>
                                                     </connections>
@@ -1985,7 +2014,6 @@
         <image name="Add Incident" width="373" height="665"/>
         <image name="Filter and Sort-30" width="30" height="30"/>
         <image name="Menu2" width="370" height="660"/>
-        <image name="Photo place holder" width="927" height="720"/>
         <image name="Prof for app2" width="195" height="197"/>
         <image name="Screen Shot 2017-02-22 at 10.19.56 PM" width="359" height="641"/>
         <image name="Screen Shot 2017-02-22 at 9.42.40 PM" width="361" height="642"/>
@@ -1993,15 +2021,16 @@
         <image name="Screen Shot 2017-04-01 at 11.47.38 PM" width="373" height="665"/>
         <image name="Screen Shot 2017-04-18 at 9.58.40 AM" width="372" height="662"/>
         <image name="SignUpBG" width="360" height="642"/>
+        <image name="person" width="600" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nA5-ZC-QvG"/>
-        <segue reference="nhY-VO-xdj"/>
-        <segue reference="qmn-32-e6j"/>
-        <segue reference="jcv-wz-4VG"/>
-        <segue reference="gma-qC-lNL"/>
-        <segue reference="I56-N2-tEb"/>
+        <segue reference="4Wp-FY-BBy"/>
         <segue reference="vvs-6H-Mb0"/>
+        <segue reference="jcv-wz-4VG"/>
+        <segue reference="w4l-NK-DK1"/>
         <segue reference="PHO-ig-NMo"/>
+        <segue reference="gma-qC-lNL"/>
+        <segue reference="wJz-h7-DSx"/>
     </inferredMetricsTieBreakers>
 </document>
