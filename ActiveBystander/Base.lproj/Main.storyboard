@@ -1040,13 +1040,13 @@
                                                 <constraint firstAttribute="width" constant="375" id="yzg-oW-omR"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMM-zY-ci5">
-                                            <rect key="frame" x="257" y="98" width="106" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMM-zY-ci5">
+                                            <rect key="frame" x="215" y="104" width="145" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="alE-4V-68v"/>
-                                                <constraint firstAttribute="width" constant="106" id="fwS-Ij-BOK"/>
+                                                <constraint firstAttribute="width" constant="145" id="fwS-Ij-BOK"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="9"/>
                                             <color key="textColor" red="0.3798600164" green="0.51664368400000005" blue="0.69040684200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1063,13 +1063,13 @@
                                         <constraint firstItem="ibL-xz-1vY" firstAttribute="leading" secondItem="plj-xk-Zwo" secondAttribute="trailing" constant="130" id="Ot7-lg-FEx"/>
                                         <constraint firstItem="XbA-DB-A9a" firstAttribute="top" secondItem="vKW-hh-wSq" secondAttribute="top" constant="-4" id="Oxz-Os-gtm"/>
                                         <constraint firstAttribute="trailing" secondItem="XbA-DB-A9a" secondAttribute="trailing" id="PXr-0n-BCe"/>
-                                        <constraint firstItem="ibL-xz-1vY" firstAttribute="leading" secondItem="HMM-zY-ci5" secondAttribute="trailing" constant="2" id="RGx-aJ-ONj"/>
+                                        <constraint firstItem="ibL-xz-1vY" firstAttribute="leading" secondItem="HMM-zY-ci5" secondAttribute="trailing" constant="5" id="RGx-aJ-ONj"/>
                                         <constraint firstAttribute="bottom" secondItem="hSL-1a-0Hs" secondAttribute="bottom" id="SKg-e3-UOX"/>
                                         <constraint firstItem="plj-xk-Zwo" firstAttribute="leading" secondItem="5X6-m9-eLR" secondAttribute="trailing" constant="13" id="UPU-qF-UmT"/>
                                         <constraint firstAttribute="trailing" secondItem="h0z-R8-gvz" secondAttribute="trailing" constant="7" id="WLS-OT-nJO"/>
                                         <constraint firstAttribute="trailing" secondItem="hSL-1a-0Hs" secondAttribute="trailing" id="XFI-GS-Qk1"/>
                                         <constraint firstItem="h0z-R8-gvz" firstAttribute="top" secondItem="Kcx-o8-fhZ" secondAttribute="bottom" constant="10" id="Xo7-Wz-gmT"/>
-                                        <constraint firstItem="hSL-1a-0Hs" firstAttribute="top" secondItem="HMM-zY-ci5" secondAttribute="bottom" constant="2" id="Y8g-vs-wns"/>
+                                        <constraint firstItem="hSL-1a-0Hs" firstAttribute="top" secondItem="HMM-zY-ci5" secondAttribute="bottom" constant="-4" id="Y8g-vs-wns"/>
                                         <constraint firstItem="XbA-DB-A9a" firstAttribute="leading" secondItem="vKW-hh-wSq" secondAttribute="leading" id="YUq-hs-6U7"/>
                                         <constraint firstItem="5X6-m9-eLR" firstAttribute="leading" secondItem="L0n-eK-VMO" secondAttribute="trailing" constant="7" id="awP-M3-jIr"/>
                                         <constraint firstItem="L0n-eK-VMO" firstAttribute="leading" secondItem="vKW-hh-wSq" secondAttribute="leading" id="dIA-I6-2Uo"/>
