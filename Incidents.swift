@@ -22,9 +22,14 @@ struct Incident {
     var State: String
     var Description: String
     let user = FIRAuth.auth()?.currentUser
+    let IncDate: String
+    
+      
     
     
-    init(Category: String, Address: String, City: String, State: String, Description:String, User: String, key: String = "")
+    
+    
+    init(Category: String, Address: String, City: String, State: String, Description:String, User: String, key: String = "", IncDate: String)
     {
         self.key = key
         self.Category = Category
@@ -33,6 +38,9 @@ struct Incident {
         self.State = State
         self.Description = Description
         self.ref = nil
+        self.IncDate = IncDate
+        
+        
         
     }
     
@@ -46,8 +54,8 @@ struct Incident {
         State = snapshotValue["State"] as! String
         Description = snapshotValue["Description"] as! String
         ref = snapshot.ref
-        
-        
+        IncDate = snapshotValue["IncDate"] as! String
+    
     }
     
     func toAnyObject() -> Any {
@@ -57,7 +65,9 @@ struct Incident {
             "City": City,
             "State": State,
             "Description": Description,
-            "user": user!
+            "user": user!,
+            "IncDate": IncDate
+          
             
         ]
     }

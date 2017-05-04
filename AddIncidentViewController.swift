@@ -17,8 +17,9 @@ class AddIncidentViewController: UIViewController, UITextViewDelegate, UITextFie
     @IBOutlet weak var txtState: UITextField!
     @IBOutlet weak var txtDescription: UITextView!
 
+    @IBOutlet weak var lblDate: UILabel!
     
-    
+
     
     
     
@@ -44,7 +45,8 @@ class AddIncidentViewController: UIViewController, UITextViewDelegate, UITextFie
              "City": txtCity.text!,
              "State": txtState.text!,
              "Description": txtDescription.text!,
-             "userID": uid!]
+             "userID": uid!,
+             "IncDate": lblDate.text!]
         
         //Adds FB JSON node for incidentLog
         ref.child("Incidents").childByAutoId().setValue(incidentLog)
@@ -89,6 +91,25 @@ class AddIncidentViewController: UIViewController, UITextViewDelegate, UITextFie
        self.txtDescription.delegate = self
         txtDescription.text = "Description..."
         txtDescription.textColor = UIColor.lightGray
+        
+        
+        
+        let date = Date()
+        let  calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: date)
+        let formHour = String(format: "%02d", hour)
+        let minute = calendar.component(.minute, from: date)
+        let formMin = String(format:"%02d", minute)
+        let day = calendar.component(.day, from: date)
+        let formDay = String(format:"%02d", day)
+        let month = calendar.component(.month, from: date)
+        let formMonth = String(format: "%02d", month)
+        let year = calendar.component(.year, from: date)
+        
+        lblDate.text = "\(formMonth)/\(formDay)/\(year) at \(formHour):\(formMin)"
+        
+        
         
         }
     

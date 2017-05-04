@@ -81,12 +81,12 @@ class UpdateAccountSettingsViewController: UIViewController, UITextFieldDelegate
         let user = FIRAuth.auth()?.currentUser?.uid
         
         FIRDatabase.database().reference().child("users").child(user!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject]
+           /* if let dictionary = snapshot.value as? [String: AnyObject]
             {
                 //Convert?
                 self.profileImageView.image = dictionary["userPhoto"] as? UIImage
                 
-            }
+            }  */
             
         })
 

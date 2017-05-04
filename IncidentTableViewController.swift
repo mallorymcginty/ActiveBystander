@@ -40,7 +40,7 @@ class IncidentTableViewController: UITableViewController, UINavigationBarDelegat
       
         tableView.allowsMultipleSelectionDuringEditing = false
         
-        //ORDER BY TIME POSTED - AUTOMATIC
+        
         ref.observe(.value, with: { snapshot in
             print(snapshot.value!)
             
@@ -52,7 +52,11 @@ class IncidentTableViewController: UITableViewController, UINavigationBarDelegat
                 newIncident.append(incident)
             }
             
+    
+            
             self.incidents = newIncident
+        
+            self.incidents = newIncident.sorted{$1.IncDate < $0.IncDate} // sort on incident date/time
             self.tableView.reloadData()
             
             })
@@ -99,6 +103,7 @@ class IncidentTableViewController: UITableViewController, UINavigationBarDelegat
         cell.lblIncAddress.text? = incidentItem.Address
         cell.lblIncCity.text? = incidentItem.City
         cell.lblIncState.text? = incidentItem.State
+        cell.lblIncDate.text? = incidentItem.IncDate
         
         cell.btnIncDesc.accessibilityLabel = incidentItem.Description
         

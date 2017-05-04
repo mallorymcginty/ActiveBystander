@@ -123,6 +123,11 @@ class SignUpViewController: UIViewController {
     }
 
         
+     
+        
+        
+        
+        
         
         
         
@@ -135,6 +140,32 @@ class SignUpViewController: UIViewController {
 
 
 }
+    
+
+    @IBAction func btnForDemo(_ sender: UIButton)
+    {
+        let alertTitle = "Registration Failed!"
+        let alertMessage = "We're sorry, 'marquette.edu' is not registered in our system yet. Please check back later!"
+        
+        
+        
+        let alertController = UIAlertController(title: alertTitle, message: (alertMessage), preferredStyle: UIAlertControllerStyle.alert)
+        
+        // create an OK button for dismissing the alert
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        
+        // add a button to the alert pop-up
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
     
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)

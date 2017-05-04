@@ -17,12 +17,18 @@ class IncidentTableViewCell: UITableViewCell
     @IBOutlet weak var lblIncAddress: UILabel!
     @IBOutlet weak var lblIncCity: UILabel!
     @IBOutlet weak var lblIncState: UILabel!
+   
+    @IBOutlet weak var lblIncDate: UILabel!
     
     @IBOutlet weak var btnIncDesc: UIButton!
     
     
     var incidents: [Incident] = []
     var ref = FIRDatabase.database().reference(withPath: "Incidents")
+    
+    
+    
+    
     
     
     @IBAction func btnIncDesc(_ sender: UIButton)
