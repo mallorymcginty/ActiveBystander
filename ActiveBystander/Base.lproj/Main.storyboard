@@ -276,17 +276,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoZ-Ok-zGv">
-                                <rect key="frame" x="20" y="601" width="119" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="119" id="7Kg-bo-fJM"/>
-                                    <constraint firstAttribute="height" constant="49" id="dCa-Q8-0DK"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="btnForDemo:" destination="p8A-1a-YRz" eventType="touchUpInside" id="vwZ-jM-Irk"/>
-                                    <action selector="btnSignUp:" destination="p8A-1a-YRz" eventType="touchUpInside" id="sGK-v1-Q9y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3798600164" green="0.51664368400000005" blue="0.69040684200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -300,7 +289,6 @@
                             <constraint firstItem="fqf-od-Fb6" firstAttribute="top" secondItem="BGT-bp-aoM" secondAttribute="bottom" constant="55" id="UFJ-R3-9JB"/>
                             <constraint firstItem="J2z-cD-X4f" firstAttribute="top" secondItem="gFM-n5-ZhL" secondAttribute="top" id="Wci-SR-hbC"/>
                             <constraint firstItem="MDP-mc-QpM" firstAttribute="leading" secondItem="gFM-n5-ZhL" secondAttribute="leading" constant="74" id="Wt3-uI-35G"/>
-                            <constraint firstItem="BoZ-Ok-zGv" firstAttribute="leading" secondItem="gFM-n5-ZhL" secondAttribute="leading" constant="20" id="XtQ-qw-wne"/>
                             <constraint firstItem="J2z-cD-X4f" firstAttribute="leading" secondItem="gFM-n5-ZhL" secondAttribute="leading" id="bEr-nM-x8y"/>
                             <constraint firstItem="fqf-od-Fb6" firstAttribute="top" secondItem="BGT-bp-aoM" secondAttribute="bottom" constant="55" id="cXx-qW-ZT7"/>
                             <constraint firstItem="MDP-mc-QpM" firstAttribute="top" secondItem="HeU-sy-HGB" secondAttribute="bottom" constant="34" id="e0g-NR-IvC"/>
@@ -308,7 +296,6 @@
                             <constraint firstItem="gRa-tL-XJc" firstAttribute="top" secondItem="Ujt-67-Pvz" secondAttribute="bottom" constant="39" id="hUC-95-RXF"/>
                             <constraint firstItem="o4h-RL-EqI" firstAttribute="top" secondItem="fbJ-7i-4UV" secondAttribute="bottom" constant="18" id="nrT-Yi-fnA"/>
                             <constraint firstAttribute="bottom" secondItem="J2z-cD-X4f" secondAttribute="bottom" constant="-7" id="pTp-Nl-gEf"/>
-                            <constraint firstItem="o4h-RL-EqI" firstAttribute="top" secondItem="BoZ-Ok-zGv" secondAttribute="bottom" constant="17" id="ryS-WK-mkh"/>
                             <constraint firstItem="SXY-Vt-Py1" firstAttribute="top" secondItem="fqf-od-Fb6" secondAttribute="bottom" constant="70" id="sjb-FG-6Em"/>
                             <constraint firstItem="fqf-od-Fb6" firstAttribute="leading" secondItem="gFM-n5-ZhL" secondAttribute="leading" constant="29" id="spA-Vp-dCu"/>
                             <constraint firstItem="gRa-tL-XJc" firstAttribute="leading" secondItem="gFM-n5-ZhL" secondAttribute="leading" constant="29" id="tfL-0b-aLc"/>
@@ -655,7 +642,7 @@
                                     <inset key="sectionInset" minX="7" minY="5" maxX="7" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="g8b-n8-yrS" customClass="PhotoCell" customModule="ActiveBystander" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="PhotoCell" id="g8b-n8-yrS" customClass="PhotoCell" customModule="ActiveBystander" customModuleProvider="target">
                                         <rect key="frame" x="7" y="5" width="110" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -697,6 +684,7 @@
                                             <constraint firstAttribute="bottom" secondItem="g1V-bS-gtW" secondAttribute="bottom" constant="5" id="nqd-bf-qzO"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="btnDesc" destination="N68-ej-yQ0" id="L9r-DA-VqN"/>
                                             <outlet property="imgPhoto" destination="a4k-Cr-cKA" id="nes-Yt-iUd"/>
                                             <outlet property="lblScore" destination="g1V-bS-gtW" id="Zfz-91-jht"/>
                                         </connections>
@@ -1160,7 +1148,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                             </textField>
                             <button opaque="NO" alpha="0.85000002384185791" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS5-Kd-EhZ">
                                 <rect key="frame" x="71" y="589" width="234" height="48"/>
@@ -1180,7 +1168,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bLc-7N-CTg">
                                 <rect key="frame" x="53" y="310" width="268" height="197"/>
@@ -2061,14 +2049,14 @@
         <image name="person" width="600" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WUY-d7-RIa"/>
-        <segue reference="vvs-6H-Mb0"/>
-        <segue reference="4Wp-FY-BBy"/>
-        <segue reference="jcv-wz-4VG"/>
         <segue reference="gma-qC-lNL"/>
+        <segue reference="jcv-wz-4VG"/>
+        <segue reference="otK-Yw-w6p"/>
         <segue reference="Zdr-fV-F52"/>
-        <segue reference="PHO-ig-NMo"/>
         <segue reference="nA5-ZC-QvG"/>
+        <segue reference="4Wp-FY-BBy"/>
+        <segue reference="vvs-6H-Mb0"/>
+        <segue reference="PHO-ig-NMo"/>
         <segue reference="wJz-h7-DSx"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -58,6 +58,8 @@ class LoginViewController: UIViewController {
                 // add a button to the alert pop-up
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
+                    
+                self.btnSignIn.isHidden = false
             }
         }
         }

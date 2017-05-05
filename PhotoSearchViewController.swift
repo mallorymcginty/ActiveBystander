@@ -421,7 +421,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
         cell.backgroundColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha: 1.0)
         
         // Do any custom modifications you your cell, referencing the outlets you defined in the Custom cell file // if we have a label IBOutlet in PhotoCell we can customize it here
-        cell.btnDescDelegate = self as? btnDesc
+       
         // on page load when we have no search results, show nothing
         if similarImageUrls.count > 0 {
             
@@ -431,7 +431,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
             if (indexPath.row < similarImageUrls.count){
                 
                 let image = self.similarImageUrls[indexPath.row]
-                
+               
                 // get image asynchronously via URL
                 let url = URL(string: image.imageUrl)
                 
@@ -444,7 +444,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
                 }
                 cell.lblScore.isHidden = false
                 cell.lblScore.text = "Score: \(NSString(format: "%.2f", (image.score * 100)) as String)%"
-                
+                cell.btnDesc.accessibilityLabel = image.description
                 }
             else
             {
@@ -470,6 +470,7 @@ class PhotoSearchViewController: UIViewController, UICollectionViewDataSource, U
                 ac.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(ac, animated: true)
             }
+           
         }
         
         return cell
